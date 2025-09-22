@@ -1,20 +1,19 @@
 package com.examly.springapp.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.List;
 
 import com.examly.springapp.model.Booking;
-import com.examly.springapp.repository.BookingRepository;
 
-@Service
-public class BookingService {
+public interface BookingService {
 
-    @Autowired
-    BookingRepository bookingRepository;
+    Booking saveBooking(Booking booking);
 
-    public Booking createBooking(Booking booking) {
-        // TODO Auto-generated method stub
-        return bookingRepository.save(booking);
-    }
+    List<Booking> getAllBookings();
+
+    List<Booking> getBookingsBySport(String sportType);
+
+    String deleteBooking(Long id);
+
+    List<Booking> getBookingsSortedByDate();
 
 }

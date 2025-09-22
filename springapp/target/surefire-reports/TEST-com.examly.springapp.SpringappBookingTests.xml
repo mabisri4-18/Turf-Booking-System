@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.examly.springapp.SpringappBookingTests" time="3.341" tests="21" errors="0" skipped="0" failures="6">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.examly.springapp.SpringappBookingTests" time="3.863" tests="21" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -14,7 +14,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/home/coder/project/workspace/springapp/target/surefire/surefirebooter2002241620900829620.jar /home/coder/project/workspace/springapp/target/surefire 2025-09-19T09-47-20_893-jvmRun1 surefire15799321315608899890tmp surefire_05130997613967935735tmp"/>
+    <property name="sun.java.command" value="/home/coder/project/workspace/springapp/target/surefire/surefirebooter3742802071164479507.jar /home/coder/project/workspace/springapp/target/surefire 2025-09-22T08-25-23_736-jvmRun1 surefire13163194585339491551tmp surefire_016921709748145685197tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/coder/project/workspace/springapp/target/test-classes:/home/coder/project/workspace/springapp/target/classes:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter/3.0.1/spring-boot-starter-3.0.1.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot/3.0.1/spring-boot-3.0.1.jar:/home/coder/.m2/repository/org/springframework/spring-context/6.0.3/spring-context-6.0.3.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.0.1/spring-boot-autoconfigure-3.0.1.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.0.1/spring-boot-starter-logging-3.0.1.jar:/home/coder/.m2/repository/ch/qos/logback/logback-classic/1.4.5/logback-classic-1.4.5.jar:/home/coder/.m2/repository/ch/qos/logback/logback-core/1.4.5/logback-core-1.4.5.jar:/home/coder/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.19.0/log4j-to-slf4j-2.19.0.jar:/home/coder/.m2/repository/org/apache/logging/log4j/log4j-api/2.19.0/log4j-api-2.19.0.jar:/home/coder/.m2/repository/org/slf4j/jul-to-slf4j/2.0.6/jul-to-slf4j-2.0.6.jar:/home/coder/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/home/coder/.m2/repository/org/springframework/spring-core/6.0.3/spring-core-6.0.3.jar:/home/coder/.m2/repository/org/springframework/spring-jcl/6.0.3/spring-jcl-6.0.3.jar:/home/coder/.m2/repository/org/yaml/snakeyaml/1.33/snakeyaml-1.33.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.0.1/spring-boot-starter-web-3.0.1.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.0.1/spring-boot-starter-json-3.0.1.jar:/home/coder/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.14.1/jackson-datatype-jdk8-2.14.1.jar:/home/coder/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.14.1/jackson-datatype-jsr310-2.14.1.jar:/home/coder/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.14.1/jackson-module-parameter-names-2.14.1.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.0.1/spring-boot-starter-tomcat-3.0.1.jar:/home/coder/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.4/tomcat-embed-core-10.1.4.jar:/home/coder/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.4/tomcat-embed-el-10.1.4.jar:/home/coder/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.4/tomcat-embed-websocket-10.1.4.jar:/home/coder/.m2/repository/org/springframework/spring-web/6.0.3/spring-web-6.0.3.jar:/home/coder/.m2/repository/org/springframework/spring-beans/6.0.3/spring-beans-6.0.3.jar:/home/coder/.m2/repository/io/micrometer/micrometer-observation/1.10.2/micrometer-observation-1.10.2.jar:/home/coder/.m2/repository/io/micrometer/micrometer-commons/1.10.2/micrometer-commons-1.10.2.jar:/home/coder/.m2/repository/org/springframework/spring-webmvc/6.0.3/spring-webmvc-6.0.3.jar:/home/coder/.m2/repository/org/springframework/spring-expression/6.0.3/spring-expression-6.0.3.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-devtools/3.0.1/spring-boot-devtools-3.0.1.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/3.0.1/spring-boot-starter-data-jpa-3.0.1.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter-aop/3.0.1/spring-boot-starter-aop-3.0.1.jar:/home/coder/.m2/repository/org/aspectj/aspectjweaver/1.9.19/aspectjweaver-1.9.19.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.0.1/spring-boot-starter-jdbc-3.0.1.jar:/home/coder/.m2/repository/com/zaxxer/HikariCP/5.0.1/HikariCP-5.0.1.jar:/home/coder/.m2/repository/org/springframework/spring-jdbc/6.0.3/spring-jdbc-6.0.3.jar:/home/coder/.m2/repository/org/hibernate/orm/hibernate-core/6.1.6.Final/hibernate-core-6.1.6.Final.jar:/home/coder/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/home/coder/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/home/coder/.m2/repository/org/jboss/logging/jboss-logging/3.5.0.Final/jboss-logging-3.5.0.Final.jar:/home/coder/.m2/repository/org/hibernate/common/hibernate-commons-annotations/6.0.2.Final/hibernate-commons-annotations-6.0.2.Final.jar:/home/coder/.m2/repository/org/jboss/jandex/2.4.2.Final/jandex-2.4.2.Final.jar:/home/coder/.m2/repository/com/fasterxml/classmate/1.5.1/classmate-1.5.1.jar:/home/coder/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.1/jaxb-runtime-4.0.1.jar:/home/coder/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.1/jaxb-core-4.0.1.jar:/home/coder/.m2/repository/org/glassfish/jaxb/txw2/4.0.1/txw2-4.0.1.jar:/home/coder/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.1/istack-commons-runtime-4.1.1.jar:/home/coder/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.0/jakarta.inject-api-2.0.0.jar:/home/coder/.m2/repository/org/antlr/antlr4-runtime/4.10.1/antlr4-runtime-4.10.1.jar:/home/coder/.m2/repository/org/springframework/data/spring-data-jpa/3.0.0/spring-data-jpa-3.0.0.jar:/home/coder/.m2/repository/org/springframework/data/spring-data-commons/3.0.0/spring-data-commons-3.0.0.jar:/home/coder/.m2/repository/org/springframework/spring-orm/6.0.3/spring-orm-6.0.3.jar:/home/coder/.m2/repository/org/springframework/spring-tx/6.0.3/spring-tx-6.0.3.jar:/home/coder/.m2/repository/org/slf4j/slf4j-api/2.0.6/slf4j-api-2.0.6.jar:/home/coder/.m2/repository/org/springframework/spring-aspects/6.0.3/spring-aspects-6.0.3.jar:/home/coder/.m2/repository/com/mysql/mysql-connector-j/8.0.32/mysql-connector-j-8.0.32.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter-security/3.0.1/spring-boot-starter-security-3.0.1.jar:/home/coder/.m2/repository/org/springframework/spring-aop/6.0.3/spring-aop-6.0.3.jar:/home/coder/.m2/repository/org/springframework/security/spring-security-config/6.0.1/spring-security-config-6.0.1.jar:/home/coder/.m2/repository/org/springframework/security/spring-security-web/6.0.1/spring-security-web-6.0.1.jar:/home/coder/.m2/repository/org/springframework/security/spring-security-test/6.0.1/spring-security-test-6.0.1.jar:/home/coder/.m2/repository/org/springframework/security/spring-security-core/6.0.1/spring-security-core-6.0.1.jar:/home/coder/.m2/repository/org/springframework/security/spring-security-crypto/6.0.1/spring-security-crypto-6.0.1.jar:/home/coder/.m2/repository/org/springframework/spring-test/6.0.3/spring-test-6.0.3.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter-oauth2-resource-server/3.0.1/spring-boot-starter-oauth2-resource-server-3.0.1.jar:/home/coder/.m2/repository/org/springframework/security/spring-security-oauth2-resource-server/6.0.1/spring-security-oauth2-resource-server-6.0.1.jar:/home/coder/.m2/repository/org/springframework/security/spring-security-oauth2-jose/6.0.1/spring-security-oauth2-jose-6.0.1.jar:/home/coder/.m2/repository/org/springframework/security/spring-security-oauth2-core/6.0.1/spring-security-oauth2-core-6.0.1.jar:/home/coder/.m2/repository/com/nimbusds/nimbus-jose-jwt/9.24.4/nimbus-jose-jwt-9.24.4.jar:/home/coder/.m2/repository/com/github/stephenc/jcip/jcip-annotations/1.0-1/jcip-annotations-1.0-1.jar:/home/coder/.m2/repository/io/jsonwebtoken/jjwt-api/0.11.5/jjwt-api-0.11.5.jar:/home/coder/.m2/repository/io/jsonwebtoken/jjwt-impl/0.11.5/jjwt-impl-0.11.5.jar:/home/coder/.m2/repository/io/jsonwebtoken/jjwt-jackson/0.11.5/jjwt-jackson-0.11.5.jar:/home/coder/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.14.1/jackson-databind-2.14.1.jar:/home/coder/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.14.1/jackson-annotations-2.14.1.jar:/home/coder/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.14.1/jackson-core-2.14.1.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter-mail/3.0.1/spring-boot-starter-mail-3.0.1.jar:/home/coder/.m2/repository/org/springframework/spring-context-support/6.0.3/spring-context-support-6.0.3.jar:/home/coder/.m2/repository/org/eclipse/angus/jakarta.mail/1.0.0/jakarta.mail-1.0.0.jar:/home/coder/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.0/jakarta.activation-api-2.1.0.jar:/home/coder/.m2/repository/org/eclipse/angus/angus-activation/1.0.0/angus-activation-1.0.0.jar:/home/coder/.m2/repository/org/springdoc/springdoc-openapi-starter-webmvc-ui/2.6.0/springdoc-openapi-starter-webmvc-ui-2.6.0.jar:/home/coder/.m2/repository/org/springdoc/springdoc-openapi-starter-webmvc-api/2.6.0/springdoc-openapi-starter-webmvc-api-2.6.0.jar:/home/coder/.m2/repository/org/springdoc/springdoc-openapi-starter-common/2.6.0/springdoc-openapi-starter-common-2.6.0.jar:/home/coder/.m2/repository/io/swagger/core/v3/swagger-core-jakarta/2.2.22/swagger-core-jakarta-2.2.22.jar:/home/coder/.m2/repository/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar:/home/coder/.m2/repository/io/swagger/core/v3/swagger-annotations-jakarta/2.2.22/swagger-annotations-jakarta-2.2.22.jar:/home/coder/.m2/repository/io/swagger/core/v3/swagger-models-jakarta/2.2.22/swagger-models-jakarta-2.2.22.jar:/home/coder/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2.jar:/home/coder/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.14.1/jackson-dataformat-yaml-2.14.1.jar:/home/coder/.m2/repository/org/webjars/swagger-ui/5.17.14/swagger-ui-5.17.14.jar:/home/coder/.m2/repository/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.0.1/spring-boot-starter-test-3.0.1.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-test/3.0.1/spring-boot-test-3.0.1.jar:/home/coder/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.0.1/spring-boot-test-autoconfigure-3.0.1.jar:/home/coder/.m2/repository/com/jayway/jsonpath/json-path/2.7.0/json-path-2.7.0.jar:/home/coder/.m2/repository/net/minidev/json-smart/2.4.8/json-smart-2.4.8.jar:/home/coder/.m2/repository/net/minidev/accessors-smart/2.4.8/accessors-smart-2.4.8.jar:/home/coder/.m2/repository/org/ow2/asm/asm/9.1/asm-9.1.jar:/home/coder/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.0/jakarta.xml.bind-api-4.0.0.jar:/home/coder/.m2/repository/org/assertj/assertj-core/3.23.1/assertj-core-3.23.1.jar:/home/coder/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/home/coder/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.1/junit-jupiter-5.9.1.jar:/home/coder/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.1/junit-jupiter-params-5.9.1.jar:/home/coder/.m2/repository/org/mockito/mockito-junit-jupiter/4.8.1/mockito-junit-jupiter-4.8.1.jar:/home/coder/.m2/repository/org/skyscreamer/jsonassert/1.5.1/jsonassert-1.5.1.jar:/home/coder/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/home/coder/.m2/repository/org/xmlunit/xmlunit-core/2.9.0/xmlunit-core-2.9.0.jar:/home/coder/.m2/repository/org/junit/vintage/junit-vintage-engine/5.9.1/junit-vintage-engine-5.9.1.jar:/home/coder/.m2/repository/org/junit/platform/junit-platform-engine/1.9.1/junit-platform-engine-1.9.1.jar:/home/coder/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/coder/.m2/repository/org/junit/platform/junit-platform-commons/1.9.1/junit-platform-commons-1.9.1.jar:/home/coder/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/coder/.m2/repository/org/mockito/mockito-core/4.8.1/mockito-core-4.8.1.jar:/home/coder/.m2/repository/net/bytebuddy/byte-buddy/1.12.20/byte-buddy-1.12.20.jar:/home/coder/.m2/repository/net/bytebuddy/byte-buddy-agent/1.12.20/byte-buddy-agent-1.12.20.jar:/home/coder/.m2/repository/org/objenesis/objenesis/3.2/objenesis-3.2.jar:/home/coder/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.1/junit-jupiter-engine-5.9.1.jar:/home/coder/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.1/junit-jupiter-api-5.9.1.jar:/home/coder/.m2/repository/junit/junit/4.12/junit-4.12.jar:/home/coder/.m2/repository/org/hamcrest/hamcrest-core/2.2/hamcrest-core-2.2.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="FILE_LOG_CHARSET" value="UTF-8"/>
     <property name="java.awt.headless" value="true"/>
-    <property name="surefire.real.class.path" value="/home/coder/project/workspace/springapp/target/surefire/surefirebooter2002241620900829620.jar"/>
+    <property name="surefire.real.class.path" value="/home/coder/project/workspace/springapp/target/surefire/surefirebooter3742802071164479507.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.15+6-Debian-1deb11u1"/>
     <property name="user.name" value="coder"/>
@@ -48,7 +48,7 @@
     <property name="user.dir" value="/home/coder/project/workspace/springapp"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="PID" value="59525"/>
+    <property name="PID" value="23625"/>
     <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
     <property name="native.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
@@ -59,12 +59,12 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="AddBookingReturns200" classname="com.examly.springapp.SpringappBookingTests" time="0.331">
-    <system-out><![CDATA[09:47:22.443 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [SpringappBookingTests]: using SpringBootContextLoader
-09:47:22.446 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.examly.springapp.SpringappBookingTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-09:47:22.469 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using ContextCustomizers for test class [SpringappBookingTests]: [ImportsContextCustomizer, ExcludeFilterContextCustomizer, DuplicateJsonObjectContextCustomizer, MockitoContextCustomizer, TestRestTemplateContextCustomizer, DisableObservabilityContextCustomizer, PropertyMappingContextCustomizer, Customizer]
-09:47:22.542 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners for test class [SpringappBookingTests]: [ServletTestExecutionListener, DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, MockitoTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, TransactionalTestExecutionListener, SqlScriptsTestExecutionListener, WithSecurityContextTestExecutionListener, EventPublishingTestExecutionListener, ReactorContextTestExecutionListener, ResetMocksTestExecutionListener, RestDocsTestExecutionListener, MockRestServiceServerResetTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockWebServiceServerTestExecutionListener]
-09:47:22.543 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: class [SpringappBookingTests], class annotated with @DirtiesContext [false] with mode [null]
+  <testcase name="AddBookingReturns200" classname="com.examly.springapp.SpringappBookingTests" time="0.333">
+    <system-out><![CDATA[08:25:24.486 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [SpringappBookingTests]: using SpringBootContextLoader
+08:25:24.489 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.examly.springapp.SpringappBookingTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+08:25:24.513 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using ContextCustomizers for test class [SpringappBookingTests]: [ImportsContextCustomizer, ExcludeFilterContextCustomizer, DuplicateJsonObjectContextCustomizer, MockitoContextCustomizer, TestRestTemplateContextCustomizer, DisableObservabilityContextCustomizer, PropertyMappingContextCustomizer, Customizer]
+08:25:24.587 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners for test class [SpringappBookingTests]: [ServletTestExecutionListener, DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, MockitoTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, TransactionalTestExecutionListener, SqlScriptsTestExecutionListener, WithSecurityContextTestExecutionListener, EventPublishingTestExecutionListener, ReactorContextTestExecutionListener, ResetMocksTestExecutionListener, RestDocsTestExecutionListener, MockRestServiceServerResetTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockWebServiceServerTestExecutionListener]
+08:25:24.588 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: class [SpringappBookingTests], class annotated with @DirtiesContext [false] with mode [null]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -74,19 +74,19 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.0.1)
 
-2025-09-19T09:47:22.735Z  INFO 59525 --- [           main] c.e.springapp.SpringappBookingTests      : Starting SpringappBookingTests using Java 17.0.15 with PID 59525 (started by coder in /home/coder/project/workspace/springapp)
-2025-09-19T09:47:22.736Z  INFO 59525 --- [           main] c.e.springapp.SpringappBookingTests      : The following 1 profile is active: "test"
-2025-09-19T09:47:23.283Z  INFO 59525 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-19T09:47:23.322Z  INFO 59525 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 1 JPA repository interfaces.
-2025-09-19T09:47:23.632Z  INFO 59525 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-19T09:47:23.668Z  INFO 59525 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.6.Final
-2025-09-19T09:47:23.830Z  WARN 59525 --- [           main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
-2025-09-19T09:47:23.898Z  INFO 59525 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-09-19T09:47:24.014Z  INFO 59525 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6f3b13d0
-2025-09-19T09:47:24.016Z  INFO 59525 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-09-19T09:47:24.027Z  INFO 59525 --- [           main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2025-09-19T09:47:24.027Z  WARN 59525 --- [           main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2025-09-19T09:47:24.162Z  INFO 59525 --- [           main] o.h.c.beanvalidation.TypeSafeActivator   : Error calling `jakarta.validation.Validation#buildDefaultValidatorFactory`
+2025-09-22T08:25:24.790Z  INFO 23625 --- [           main] c.e.springapp.SpringappBookingTests      : Starting SpringappBookingTests using Java 17.0.15 with PID 23625 (started by coder in /home/coder/project/workspace/springapp)
+2025-09-22T08:25:24.791Z  INFO 23625 --- [           main] c.e.springapp.SpringappBookingTests      : The following 1 profile is active: "test"
+2025-09-22T08:25:25.449Z  INFO 23625 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-22T08:25:25.483Z  INFO 23625 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 1 JPA repository interfaces.
+2025-09-22T08:25:25.791Z  INFO 23625 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-22T08:25:25.821Z  INFO 23625 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.6.Final
+2025-09-22T08:25:25.926Z  WARN 23625 --- [           main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2025-09-22T08:25:26.010Z  INFO 23625 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-09-22T08:25:26.171Z  INFO 23625 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@fcf9525
+2025-09-22T08:25:26.174Z  INFO 23625 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-09-22T08:25:26.191Z  INFO 23625 --- [           main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2025-09-22T08:25:26.192Z  WARN 23625 --- [           main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-09-22T08:25:26.376Z  INFO 23625 --- [           main] o.h.c.beanvalidation.TypeSafeActivator   : Error calling `jakarta.validation.Validation#buildDefaultValidatorFactory`
 
 jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
 	at jakarta.validation.Validation$GenericBootstrapImpl.configure(Validation.java:291) ~[jakarta.validation-api-3.0.2.jar:na]
@@ -203,65 +203,25 @@ jakarta.validation.NoProviderFoundException: Unable to create a Configuration, b
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:562) ~[surefire-booter-3.0.0-M5.jar:3.0.0-M5]
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:548) ~[surefire-booter-3.0.0-M5.jar:3.0.0-M5]
 
-Hibernate: drop table if exists booking
-Hibernate: create table booking (id bigint not null auto_increment, booking_date date, customer_name varchar(255), duration integer not null, sport_type varchar(255), time_slot varchar(255), primary key (id)) engine=InnoDB
-2025-09-19T09:47:24.510Z  INFO 59525 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2025-09-19T09:47:24.516Z  INFO 59525 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-19T09:47:24.777Z  WARN 59525 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-19T09:47:24.791Z  WARN 59525 --- [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+2025-09-22T08:25:26.714Z  INFO 23625 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-09-22T08:25:26.720Z  INFO 23625 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-22T08:25:27.034Z  WARN 23625 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-22T08:25:27.048Z  WARN 23625 --- [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 27b0eee1-8442-4b48-8bc7-5f169d71ed3a
+Using generated security password: 7cf94364-8e2b-432b-9e2b-1f7a9717b71c
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2025-09-19T09:47:24.991Z  INFO 59525 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4f629aa4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3f12676, org.springframework.security.web.context.SecurityContextHolderFilter@7c0a6f62, org.springframework.security.web.header.HeaderWriterFilter@72c175f1, org.springframework.web.filter.CorsFilter@f348e10, org.springframework.security.web.authentication.logout.LogoutFilter@5f2ad3d5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@58fbfefb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@45964b9e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3f22ce2a, org.springframework.security.web.session.SessionManagementFilter@4ef277ef, org.springframework.security.web.access.ExceptionTranslationFilter@4b552b13, org.springframework.security.web.access.intercept.AuthorizationFilter@6094ad4]
-2025-09-19T09:47:25.244Z  INFO 59525 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2025-09-19T09:47:25.244Z  INFO 59525 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2025-09-19T09:47:25.245Z  INFO 59525 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2025-09-19T09:47:25.263Z  INFO 59525 --- [           main] c.e.springapp.SpringappBookingTests      : Started SpringappBookingTests in 2.695 seconds (process running for 3.348)
+2025-09-22T08:25:27.275Z  INFO 23625 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4d22265c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1f7b8d59, org.springframework.security.web.context.SecurityContextHolderFilter@69988d42, org.springframework.security.web.header.HeaderWriterFilter@3777fc44, org.springframework.web.filter.CorsFilter@28551755, org.springframework.security.web.authentication.logout.LogoutFilter@3b1895e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1bbfd42f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@37d8562f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7ec68821, org.springframework.security.web.session.SessionManagementFilter@16f2d883, org.springframework.security.web.access.ExceptionTranslationFilter@5c261c74, org.springframework.security.web.access.intercept.AuthorizationFilter@49c37918]
+2025-09-22T08:25:27.570Z  INFO 23625 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-09-22T08:25:27.570Z  INFO 23625 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-22T08:25:27.572Z  INFO 23625 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2025-09-22T08:25:27.595Z  INFO 23625 --- [           main] c.e.springapp.SpringappBookingTests      : Started SpringappBookingTests in 2.981 seconds (process running for 3.634)
 Hibernate: insert into booking (booking_date, customer_name, duration, sport_type, time_slot) values (?, ?, ?, ?, ?)
 ]]></system-out>
   </testcase>
-  <testcase name="GetAllBookingsReturnsArray" classname="com.examly.springapp.SpringappBookingTests" time="0.012">
-    <failure type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status expected:<200> but was:<404>
-	at com.examly.springapp.SpringappBookingTests.GetAllBookingsReturnsArray(SpringappApplicationTest.java:67)
-]]></failure>
-    <system-out><![CDATA[
-MockHttpServletRequest:
-      HTTP Method = GET
-      Request URI = /api/bookings/allBookings
-       Parameters = {}
-          Headers = [Accept:"application/json"]
-             Body = null
-    Session Attrs = {}
-
-Handler:
-             Type = org.springframework.web.servlet.resource.ResourceHttpRequestHandler
-
-Async:
-    Async started = false
-     Async result = null
-
-Resolved Exception:
-             Type = null
-
-ModelAndView:
-        View name = null
-             View = null
-            Model = null
-
-FlashMap:
-       Attributes = null
-
-MockHttpServletResponse:
-           Status = 404
-    Error message = null
-          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
-     Content type = null
-             Body = 
-    Forwarded URL = null
-   Redirected URL = null
-          Cookies = []
+  <testcase name="GetAllBookingsReturnsArray" classname="com.examly.springapp.SpringappBookingTests" time="0.074">
+    <system-out><![CDATA[Hibernate: select b1_0.id,b1_0.booking_date,b1_0.customer_name,b1_0.duration,b1_0.sport_type,b1_0.time_slot from booking b1_0
 
 MockHttpServletRequest:
       HTTP Method = GET
@@ -269,145 +229,11 @@ MockHttpServletRequest:
        Parameters = {}
           Headers = [Accept:"application/json"]
              Body = null
-    Session Attrs = {}
-
-Handler:
-             Type = org.springframework.web.servlet.resource.ResourceHttpRequestHandler
-
-Async:
-    Async started = false
-     Async result = null
-
-Resolved Exception:
-             Type = null
-
-ModelAndView:
-        View name = null
-             View = null
-            Model = null
-
-FlashMap:
-       Attributes = null
-
-MockHttpServletResponse:
-           Status = 404
-    Error message = null
-          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
-     Content type = null
-             Body = 
-    Forwarded URL = null
-   Redirected URL = null
-          Cookies = []
-]]></system-out>
-  </testcase>
-  <testcase name="GetBookingsBySportReturns200" classname="com.examly.springapp.SpringappBookingTests" time="0.007">
-    <failure type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status expected:<200> but was:<404>
-	at com.examly.springapp.SpringappBookingTests.GetBookingsBySportReturns200(SpringappApplicationTest.java:79)
-]]></failure>
-    <system-out><![CDATA[
-MockHttpServletRequest:
-      HTTP Method = GET
-      Request URI = /api/bookings/bySport
-       Parameters = {sportType=[Football]}
-          Headers = [Accept:"application/json"]
-             Body = null
-    Session Attrs = {}
-
-Handler:
-             Type = org.springframework.web.servlet.resource.ResourceHttpRequestHandler
-
-Async:
-    Async started = false
-     Async result = null
-
-Resolved Exception:
-             Type = null
-
-ModelAndView:
-        View name = null
-             View = null
-            Model = null
-
-FlashMap:
-       Attributes = null
-
-MockHttpServletResponse:
-           Status = 404
-    Error message = null
-          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
-     Content type = null
-             Body = 
-    Forwarded URL = null
-   Redirected URL = null
-          Cookies = []
-]]></system-out>
-  </testcase>
-  <testcase name="GetBookingsSortedByDateReturns200" classname="com.examly.springapp.SpringappBookingTests" time="0.005">
-    <failure type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status expected:<200> but was:<404>
-	at com.examly.springapp.SpringappBookingTests.GetBookingsSortedByDateReturns200(SpringappApplicationTest.java:90)
-]]></failure>
-    <system-out><![CDATA[
-MockHttpServletRequest:
-      HTTP Method = GET
-      Request URI = /api/bookings/sortedByDate
-       Parameters = {}
-          Headers = [Accept:"application/json"]
-             Body = null
-    Session Attrs = {}
-
-Handler:
-             Type = org.springframework.web.servlet.resource.ResourceHttpRequestHandler
-
-Async:
-    Async started = false
-     Async result = null
-
-Resolved Exception:
-             Type = null
-
-ModelAndView:
-        View name = null
-             View = null
-            Model = null
-
-FlashMap:
-       Attributes = null
-
-MockHttpServletResponse:
-           Status = 404
-    Error message = null
-          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
-     Content type = null
-             Body = 
-    Forwarded URL = null
-   Redirected URL = null
-          Cookies = []
-]]></system-out>
-  </testcase>
-  <testcase name="DeleteBookingReturns200" classname="com.examly.springapp.SpringappBookingTests" time="0.013">
-    <failure type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Status expected:<200> but was:<404>
-	at com.examly.springapp.SpringappBookingTests.DeleteBookingReturns200(SpringappApplicationTest.java:122)
-]]></failure>
-    <system-out><![CDATA[Hibernate: insert into booking (booking_date, customer_name, duration, sport_type, time_slot) values (?, ?, ?, ?, ?)
-
-MockHttpServletRequest:
-      HTTP Method = POST
-      Request URI = /api/bookings/addBooking
-       Parameters = {}
-          Headers = [Content-Type:"application/json;charset=UTF-8", Accept:"application/json", Content-Length:"148"]
-             Body = {
-    "customerName": "ToDelete",
-    "sportType": "Cricket",
-    "bookingDate": "2025-09-03",
-    "timeSlot": "10 AM - 11 AM",
-    "duration": 1
-}
-
     Session Attrs = {}
 
 Handler:
              Type = com.examly.springapp.controller.BookingController
-           Method = com.examly.springapp.controller.BookingController#createBooking(Booking)
+           Method = com.examly.springapp.controller.BookingController#getAllBookings()
 
 Async:
     Async started = false
@@ -429,71 +255,39 @@ MockHttpServletResponse:
     Error message = null
           Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
      Content type = application/json
-             Body = {"id":2,"customerName":"ToDelete","sportType":"Cricket","bookingDate":"2025-09-03","timeSlot":"10 AM - 11 AM","duration":1}
-    Forwarded URL = null
-   Redirected URL = null
-          Cookies = []
-
-MockHttpServletRequest:
-      HTTP Method = DELETE
-      Request URI = /api/bookings/1
-       Parameters = {}
-          Headers = []
-             Body = null
-    Session Attrs = {}
-
-Handler:
-             Type = org.springframework.web.servlet.resource.ResourceHttpRequestHandler
-
-Async:
-    Async started = false
-     Async result = null
-
-Resolved Exception:
-             Type = null
-
-ModelAndView:
-        View name = null
-             View = null
-            Model = null
-
-FlashMap:
-       Attributes = null
-
-MockHttpServletResponse:
-           Status = 404
-    Error message = null
-          Headers = [Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", X-Content-Type-Options:"nosniff", X-XSS-Protection:"0", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", X-Frame-Options:"DENY"]
-     Content type = null
-             Body = 
+             Body = [{"id":2,"customerName":"ToDelete","sportType":"Cricket","bookingDate":"2025-09-03","timeSlot":"10 AM - 11 AM","duration":1},{"id":3,"customerName":"surjeeth","sportType":"cricket","bookingDate":"2025-09-22","timeSlot":"2-08-2025 to 3-08-2025","duration":3},{"id":4,"customerName":"Rahul","sportType":"Football","bookingDate":"2025-09-01","timeSlot":"6 PM - 8 PM","duration":2},{"id":5,"customerName":"ToDelete","sportType":"Cricket","bookingDate":"2025-09-03","timeSlot":"10 AM - 11 AM","duration":1},{"id":6,"customerName":"Rahul","sportType":"Football","bookingDate":"2025-09-01","timeSlot":"6 PM - 8 PM","duration":2},{"id":7,"customerName":"ToDelete","sportType":"Cricket","bookingDate":"2025-09-03","timeSlot":"10 AM - 11 AM","duration":1},{"id":9,"customerName":"ToDelete","sportType":"Cricket","bookingDate":"2025-09-03","timeSlot":"10 AM - 11 AM","duration":1},{"id":10,"customerName":"Rahul","sportType":"Football","bookingDate":"2025-09-01","timeSlot":"6 PM - 8 PM","duration":2},{"id":11,"customerName":"ToDelete","sportType":"Cricket","bookingDate":"2025-09-03","timeSlot":"10 AM - 11 AM","duration":1},{"id":12,"customerName":"Rahul","sportType":"Football","bookingDate":"2025-09-01","timeSlot":"6 PM - 8 PM","duration":2},{"id":13,"customerName":"ToDelete","sportType":"Cricket","bookingDate":"2025-09-03","timeSlot":"10 AM - 11 AM","duration":1},{"id":14,"customerName":"Rahul","sportType":"Football","bookingDate":"2025-09-01","timeSlot":"6 PM - 8 PM","duration":2},{"id":15,"customerName":"ToDelete","sportType":"Cricket","bookingDate":"2025-09-03","timeSlot":"10 AM - 11 AM","duration":1},{"id":16,"customerName":"Rahul","sportType":"Football","bookingDate":"2025-09-01","timeSlot":"6 PM - 8 PM","duration":2},{"id":17,"customerName":"ToDelete","sportType":"Cricket","bookingDate":"2025-09-03","timeSlot":"10 AM - 11 AM","duration":1},{"id":18,"customerName":"Rahul","sportType":"Football","bookingDate":"2025-09-01","timeSlot":"6 PM - 8 PM","duration":2},{"id":19,"customerName":"ToDelete","sportType":"Cricket","bookingDate":"2025-09-03","timeSlot":"10 AM - 11 AM","duration":1},{"id":20,"customerName":"Rahul","sportType":"Football","bookingDate":"2025-09-01","timeSlot":"6 PM - 8 PM","duration":2},{"id":21,"customerName":"ToDelete","sportType":"Cricket","bookingDate":"2025-09-03","timeSlot":"10 AM - 11 AM","duration":1},{"id":22,"customerName":"Rahul","sportType":"Football","bookingDate":"2025-09-01","timeSlot":"6 PM - 8 PM","duration":2}]
     Forwarded URL = null
    Redirected URL = null
           Cookies = []
 ]]></system-out>
   </testcase>
-  <testcase name="BookingModelClassExists" classname="com.examly.springapp.SpringappBookingTests" time="0.003"/>
-  <testcase name="BookingModelHasSportTypeField" classname="com.examly.springapp.SpringappBookingTests" time="0.003"/>
-  <testcase name="BookingModelHasCustomerNameField" classname="com.examly.springapp.SpringappBookingTests" time="0.002"/>
-  <testcase name="BookingServiceClassExists" classname="com.examly.springapp.SpringappBookingTests" time="0.003"/>
-  <testcase name="BookingModelHasDurationField" classname="com.examly.springapp.SpringappBookingTests" time="0.002"/>
-  <testcase name="BookingNotFoundExceptionClassExists" classname="com.examly.springapp.SpringappBookingTests" time="0.003">
-    <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: Class com.examly.springapp.exception.BookingNotFoundException does not exist.
-	at com.examly.springapp.SpringappBookingTests.checkClassExists(SpringappApplicationTest.java:232)
-	at com.examly.springapp.SpringappBookingTests.BookingNotFoundExceptionClassExists(SpringappApplicationTest.java:212)
-]]></failure>
+  <testcase name="GetBookingsBySportReturns200" classname="com.examly.springapp.SpringappBookingTests" time="0.027">
+    <system-out><![CDATA[Hibernate: select b1_0.id,b1_0.booking_date,b1_0.customer_name,b1_0.duration,b1_0.sport_type,b1_0.time_slot from booking b1_0 where b1_0.sport_type=?
+]]></system-out>
   </testcase>
+  <testcase name="GetBookingsSortedByDateReturns200" classname="com.examly.springapp.SpringappBookingTests" time="0.01">
+    <system-out><![CDATA[Hibernate: select b1_0.id,b1_0.booking_date,b1_0.customer_name,b1_0.duration,b1_0.sport_type,b1_0.time_slot from booking b1_0 order by b1_0.booking_date desc
+]]></system-out>
+  </testcase>
+  <testcase name="DeleteBookingReturns200" classname="com.examly.springapp.SpringappBookingTests" time="0.14">
+    <system-out><![CDATA[Hibernate: insert into booking (booking_date, customer_name, duration, sport_type, time_slot) values (?, ?, ?, ?, ?)
+Hibernate: select count(*) from booking b1_0 where b1_0.id=?
+]]></system-out>
+  </testcase>
+  <testcase name="BookingModelClassExists" classname="com.examly.springapp.SpringappBookingTests" time="0.001"/>
+  <testcase name="BookingModelHasSportTypeField" classname="com.examly.springapp.SpringappBookingTests" time="0.002"/>
+  <testcase name="BookingModelHasCustomerNameField" classname="com.examly.springapp.SpringappBookingTests" time="0.002"/>
+  <testcase name="BookingServiceClassExists" classname="com.examly.springapp.SpringappBookingTests" time="0.002"/>
+  <testcase name="BookingModelHasDurationField" classname="com.examly.springapp.SpringappBookingTests" time="0.002"/>
+  <testcase name="BookingNotFoundExceptionClassExists" classname="com.examly.springapp.SpringappBookingTests" time="0.002"/>
   <testcase name="ModelDirectoryExists" classname="com.examly.springapp.SpringappBookingTests" time="0.002"/>
-  <testcase name="ControllerDirectoryExists" classname="com.examly.springapp.SpringappBookingTests" time="0.001"/>
-  <testcase name="BookingControllerFileExists" classname="com.examly.springapp.SpringappBookingTests" time="0.001"/>
+  <testcase name="ControllerDirectoryExists" classname="com.examly.springapp.SpringappBookingTests" time="0.002"/>
+  <testcase name="BookingControllerFileExists" classname="com.examly.springapp.SpringappBookingTests" time="0.002"/>
   <testcase name="BookingRepoExtendsJpaRepository" classname="com.examly.springapp.SpringappBookingTests" time="0.002"/>
   <testcase name="BookingModelHasBookingDateField" classname="com.examly.springapp.SpringappBookingTests" time="0.002"/>
-  <testcase name="RepositoryDirectoryExists" classname="com.examly.springapp.SpringappBookingTests" time="0.002"/>
-  <testcase name="BookingModelHasTimeSlotField" classname="com.examly.springapp.SpringappBookingTests" time="0.003"/>
-  <testcase name="BookingModelFileExists" classname="com.examly.springapp.SpringappBookingTests" time="0.002"/>
-  <testcase name="ServiceDirectoryExists" classname="com.examly.springapp.SpringappBookingTests" time="0.002"/>
-  <testcase name="BookingNotFoundExceptionExtendsRuntimeException" classname="com.examly.springapp.SpringappBookingTests" time="0.002">
-    <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: BookingNotFoundException class does not exist.
-	at com.examly.springapp.SpringappBookingTests.BookingNotFoundExceptionExtendsRuntimeException(SpringappApplicationTest.java:222)
-]]></failure>
-  </testcase>
+  <testcase name="RepositoryDirectoryExists" classname="com.examly.springapp.SpringappBookingTests" time="0.01"/>
+  <testcase name="BookingModelHasTimeSlotField" classname="com.examly.springapp.SpringappBookingTests" time="0.001"/>
+  <testcase name="BookingModelFileExists" classname="com.examly.springapp.SpringappBookingTests" time="0.001"/>
+  <testcase name="ServiceDirectoryExists" classname="com.examly.springapp.SpringappBookingTests" time="0.001"/>
+  <testcase name="BookingNotFoundExceptionExtendsRuntimeException" classname="com.examly.springapp.SpringappBookingTests" time="0.001"/>
 </testsuite>
