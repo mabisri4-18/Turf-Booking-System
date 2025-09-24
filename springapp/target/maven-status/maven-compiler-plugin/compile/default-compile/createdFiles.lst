@@ -1,2 +1,3 @@
+com/examly/springapp/service/UserService.class
 com/examly/springapp/service/BookingServiceImpl.class
 com/examly/springapp/configuration/JWTUtil.class

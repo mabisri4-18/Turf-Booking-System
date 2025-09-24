@@ -1,13 +1,17 @@
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/BookingController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/SpringappApplication.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/UserRepository.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/BookingRepository.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/configuration/SecurityConfig.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/configuration/JWTUtil.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/BookingServiceImpl.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/exception/BookingNotFoundException.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/model/UserEntity.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/model/Booking.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/exception/GlobalExceptionHandler.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/BookingService.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/configuration/CorsConfiguration.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/util/DataLoader.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/configuration/TestSecurityConfig.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/UserController.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/UserService.java

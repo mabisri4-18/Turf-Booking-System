@@ -39,95 +39,111 @@ import java.util.List;
  *  - Basic CORS for localhost dev
  */
 @Configuration
-@EnableWebSecurity
-@EnableMethodSecurity
-@Profile("!test") // <-- active in prod/dev, NOT in tests
+// @EnableWebSecurity
+// @EnableMethodSecurity
+// @Profile("!test") // <-- active in prod/dev, NOT in tests
 public class SecurityConfig {
 
-    @Value("${app.jwt.secret:ThisIsADevOnlySecretChangeMeToAtLeast32Chars}")
-    private String jwtSecret;
+//     @Value("${app.jwt.secret:ThisIsADevOnlySecretChangeMeToAtLeast32Chars}")
+//     private String jwtSecret;
 
+//     @Bean
+//     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//         http
+//             .csrf(csrf -> csrf.disable())
+//             .cors(Customizer.withDefaults())
+//             .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+//             .authorizeHttpRequests(auth -> auth
+//                 // Auth/health/docs endpoints that should stay public
+//                 .requestMatchers(
+//                     "/api/auth/**",
+//                     "/actuator/health",
+//                     "/api/users",
+//                     "/v3/api-docs/**",
+//                     "/swagger-ui/**",
+//                     "/swagger-ui.html",
+//                     "/api/**"
+//                 ).permitAll()
+//                 .anyRequest().authenticated()
+//             )
+//             .oauth2ResourceServer(oauth2 -> oauth2
+//                 .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter()))
+//             );
+
+//         return http.build();
+//     }
+
+//     /** Use the same HS256 key for verifying JWTs as used by JWTUtil to sign them. */
+//     @Bean
+//     public JwtDecoder jwtDecoder() {
+//         SecretKey key = secretKeyFrom(jwtSecret);
+//         return NimbusJwtDecoder
+//                 .withSecretKey(key)
+//                 .macAlgorithm(MacAlgorithm.HS256)
+//                 .build();
+//     }
+
+//     private SecretKey secretKeyFrom(String secret) {
+//         try {
+//             // Prefer Base64 if provided
+//             return Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
+//         } catch (IllegalArgumentException ignored) {
+//             return Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
+//         }
+//     }
+
+//     /**
+//      * Map "roles" claim to GrantedAuthorities. We expect values like "ROLE_USER".
+//      * (If your tokens use plain names like "USER", setAuthorityPrefix("ROLE_") instead.)
+//      */
+//     @Bean
+//     public Converter<Jwt, ? extends AbstractAuthenticationToken> jwtAuthenticationConverter() {
+//         JwtGrantedAuthoritiesConverter delegate = new JwtGrantedAuthoritiesConverter();
+//         delegate.setAuthoritiesClaimName("roles");
+//         delegate.setAuthorityPrefix(""); // roles already include ROLE_ prefix from JWTUtil
+
+//         JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
+//         converter.setJwtGrantedAuthoritiesConverter(delegate);
+//         return converter;
+//     }
+
+//     /** Password encoder for any form/login flows (useful for issuing tokens). */
+//     @Bean
+//     public PasswordEncoder passwordEncoder() {
+//         return new BCryptPasswordEncoder();
+//     }
+
+//     /** Simple permissive CORS for local dev; tighten for production. */
+//     @Bean
+//     public CorsConfigurationSource corsConfigurationSource() {
+//         CorsConfiguration cfg = new CorsConfiguration();
+//         cfg.setAllowedOrigins(List.of(
+//             "https://8081-fddecedccde329052728bccfaccecftwo.premiumproject.examly.io",
+//             "http://localhost:3000"
+//         ));
+//         cfg.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
+//         cfg.setAllowedHeaders(List.of("*")); // allow all headers for simplicity
+//         cfg.setAllowCredentials(true);
+    
+//         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//         source.registerCorsConfiguration("/**", cfg);
+//         return source;
+//     }
+    
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable())
-            .cors(Customizer.withDefaults())
-            .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .authorizeHttpRequests(auth -> auth
-                // Auth/health/docs endpoints that should stay public
-                .requestMatchers(
-                    "/api/auth/**",
-                    "/actuator/health",
-                    "/api/users",
-                    "/v3/api-docs/**",
-                    "/swagger-ui/**",
-                    "/swagger-ui.html",
-                    "/api/**"
-                ).permitAll()
+           .csrf(csrf -> csrf.disable())
+           .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/auth/**").permitAll()
                 .anyRequest().authenticated()
-            )
-            .oauth2ResourceServer(oauth2 -> oauth2
-                .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter()))
-            );
-
+        ).formLogin(Customizer.withDefaults());
         return http.build();
     }
-
-    /** Use the same HS256 key for verifying JWTs as used by JWTUtil to sign them. */
     @Bean
-    public JwtDecoder jwtDecoder() {
-        SecretKey key = secretKeyFrom(jwtSecret);
-        return NimbusJwtDecoder
-                .withSecretKey(key)
-                .macAlgorithm(MacAlgorithm.HS256)
-                .build();
-    }
-
-    private SecretKey secretKeyFrom(String secret) {
-        try {
-            // Prefer Base64 if provided
-            return Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
-        } catch (IllegalArgumentException ignored) {
-            return Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
-        }
-    }
-
-    /**
-     * Map "roles" claim to GrantedAuthorities. We expect values like "ROLE_USER".
-     * (If your tokens use plain names like "USER", setAuthorityPrefix("ROLE_") instead.)
-     */
-    @Bean
-    public Converter<Jwt, ? extends AbstractAuthenticationToken> jwtAuthenticationConverter() {
-        JwtGrantedAuthoritiesConverter delegate = new JwtGrantedAuthoritiesConverter();
-        delegate.setAuthoritiesClaimName("roles");
-        delegate.setAuthorityPrefix(""); // roles already include ROLE_ prefix from JWTUtil
-
-        JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
-        converter.setJwtGrantedAuthoritiesConverter(delegate);
-        return converter;
-    }
-
-    /** Password encoder for any form/login flows (useful for issuing tokens). */
-    @Bean
-    public PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder()
+    {
         return new BCryptPasswordEncoder();
-    }
-
-    /** Simple permissive CORS for local dev; tighten for production. */
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration cfg = new CorsConfiguration();
-        cfg.setAllowedOrigins(List.of(
-            "https://8081-fddecedccde329052728bccfaccecftwo.premiumproject.examly.io",
-            "http://localhost:3000"
-        ));
-        cfg.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
-        cfg.setAllowedHeaders(List.of("*")); // allow all headers for simplicity
-        cfg.setAllowCredentials(true);
-    
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", cfg);
-        return source;
     }
     
 }
