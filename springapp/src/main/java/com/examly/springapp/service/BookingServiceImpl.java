@@ -1,6 +1,8 @@
 package com.examly.springapp.service;
     
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.examly.springapp.exception.BookingNotFoundException;
@@ -58,5 +60,15 @@ public class BookingServiceImpl implements BookingService {
         return bookings;
     }
 
+    public Page<Booking> getBookingPaginated(String customerName,Pageable pageable)
+    {
+        if(!customerName.isEmpty())
+        {
+            return bookingRepository.findByCustomerNameContainingIgnoreCase(customerName,pageable);
+        }
+        else{
+            return bookingRepository.findAll(pageable);
+        }
+    }
 }
 

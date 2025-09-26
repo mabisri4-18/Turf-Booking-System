@@ -1,6 +1,11 @@
 package com.examly.springapp.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.examly.springapp.model.Booking;
 import com.examly.springapp.service.BookingService;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -51,4 +58,20 @@ public class BookingController {
     {
         return bookingService.getBookingsSortedByDate();
     }
+
+    // pagination and sorting
+    public Page<Booking> getBookingPaginated(
+        @RequestParam(defaultValue = "")String customerName,
+        @RequestParam(defaultValue = "0")int page,
+        @RequestParam(defaultValue = "5")int size,
+        @RequestParam(defaultValue = "id")String sortBy,
+        @RequestParam(defaultValue = "asc")String sortDir
+    )
+    {
+        Sort sort = sortDir.equalsIgnoreCase("asc")? Sort.by(sortBy).ascending()
+                                                   : Sort.by(sortBy).descending();
+        Pageable pageable = PageRequest.of(page,size,sort);
+        return bookingService.getBookingPaginated(customerName,pageable);
+    }
+
 }
