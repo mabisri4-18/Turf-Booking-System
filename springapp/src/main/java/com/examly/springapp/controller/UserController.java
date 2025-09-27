@@ -3,6 +3,7 @@ package com.examly.springapp.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +16,7 @@ import com.examly.springapp.model.UserEntity;
 import com.examly.springapp.service.UserService;
 
 @RestController
+@CrossOrigin(origins="https://8081-bafddcaeceecbceaafbacadbcffceabd.premiumproject.examly.io")
 @RequestMapping("/auth")
 public class UserController {
 

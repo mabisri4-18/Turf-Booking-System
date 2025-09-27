@@ -8,5 +8,4 @@ export const getBySport = (sportType) =>
 export const getSorted = () => axios.get(`${API_BASE}/sortedByDate`);
 export const addBooking = (booking) =>
   axios.post(`${API_BASE}/addBooking`, booking);
-export const deleteBooking = (id) =>
-  axios.delete(`${API_BASE}/${id}`);
+export const deleteBooking = (id) => axios.delete(`${API_BASE}/${id}`);

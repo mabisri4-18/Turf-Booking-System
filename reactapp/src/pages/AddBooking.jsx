@@ -1,6 +1,6 @@
 import React from "react";
-import BookingForm from "../components/BookingForm";
 import { useNavigate } from "react-router-dom";
+import BookingForm from "../components/BookingForm";
 
 const AddBooking = () => {
   const navigate = useNavigate();
