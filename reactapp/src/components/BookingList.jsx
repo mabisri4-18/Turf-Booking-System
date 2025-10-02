@@ -1,79 +1,124 @@
-import React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
+import React, { useEffect, useState } from "react";
+import { Table, Button, Form, Row, Col } from "react-bootstrap";
+import { getBookingPaginated, deleteBooking } from "../services/api";
+import Pagination from "./Pagination";
 
-const BookingList = ({ bookings, onDelete }) => {
+/**
+ * props:
+ *  role: "USER" or "ADMIN"
+ *  initialCustomerName?: string to filter
+ */
+export default function BookingList({ role, initialCustomerName = "" }) {
+  const [bookings, setBookings] = useState([]);
+  const [page, setPage] = useState(1); // 1-based for UI
+  const [totalPages, setTotalPages] = useState(1);
+  const [size] = useState(5);
+  const [sortBy, setSortBy] = useState("bookingDate");
+  const [sortDir, setSortDir] = useState("asc");
+  const [customerName, setCustomerName] = useState(initialCustomerName);
+  const [sportFilter, setSportFilter] = useState("");
+
+  const fetchPage = async (p = 1) => {
+    try {
+      const res = await getBookingPaginated(customerName, p - 1, size, sortBy, sortDir);
+      const data = res.data;
+      setBookings(data.content || []);
+      setTotalPages(data.totalPages || 1);
+      setPage(p);
+    } catch (err) {
+      console.error("Failed to fetch bookings", err);
+      setBookings([]);
+      setTotalPages(1);
+    }
+  };
+
+  useEffect(() => {
+    fetchPage(1);
+    // eslint-disable-next-line
+  }, [sortBy, sortDir, customerName]);
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("Delete booking?")) return;
+    try {
+      await deleteBooking(id);
+      // refresh page
+      fetchPage(page);
+    } catch (err) {
+      console.error(err);
+      alert("Delete failed");
+    }
+  };
+
+  const displayed = bookings.filter(b => !sportFilter || b.sportType === sportFilter);
+
   return (
-    <Box>
-      <Typography variant="h5" gutterBottom>
-        Bookings
-      </Typography>
+<div>
+<Row className="mb-2">
+<Col md={4}>
+<Form.Control placeholder="Filter by customer name" value={customerName} onChange={(e) => setCustomerName(e.target.value)} />
+</Col>
+<Col md={2}>
+<Form.Select value={sportFilter} onChange={(e) => setSportFilter(e.target.value)}>
+<option value="">All sports</option>
+<option>Cricket</option>
+<option>Football</option>
+<option>Badminton</option>
+<option>Tennis</option>
+</Form.Select>
+</Col>
+<Col md={3}>
+<Form.Select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+<option value="bookingDate">Date</option>
+<option value="customerName">Customer</option>
+<option value="sportType">Sport</option>
+<option value="id">ID</option>
+</Form.Select>
+</Col>
+<Col md={2}>
+<Form.Select value={sortDir} onChange={(e) => setSortDir(e.target.value)}>
+<option value="asc">Asc</option>
+<option value="desc">Desc</option>
+</Form.Select>
+</Col>
+</Row>
 
-      {bookings.length === 0 ? (
-        <Typography>No bookings available</Typography>
-      ) : (
-        <ul style={{ listStyle: "none", padding: 0 }}>
-          {bookings.map((b) => (
-            <li key={b.id} style={{ marginBottom: 12 }}>
-              <Card
-                sx={{
-                  background: "linear-gradient(135deg, #f8f9fa, #e9ecef)",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-                }}
-              >
-                <CardContent>
-                  <Grid container spacing={1} alignItems="center">
-                    <Grid item xs={12} md={8}>
-                      <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
-                        <span
-                          className="material-icons"
-                          style={{
-                            fontSize: "20px",
-                            color: "#1976d2",
-                            verticalAlign: "middle",
-                            marginRight: "5px",
-                          }}
-                        >
-                          sports_soccer
-                        </span>
-                        {b.customerName}
-                      </Typography>
-                      <Typography variant="body2">{b.sportType}</Typography>
-                      <Typography variant="body2">{b.bookingDate}</Typography>
-                      <Typography variant="body2">{b.timeSlot}</Typography>
-                      <Typography variant="body2">{b.duration} hrs</Typography>
-                    </Grid>
-
-                <Grid item xs={12} md={4} container justifyContent="flex-end">
-<Button
-variant="outlined"
-color="error"
-startIcon={
-<span
-className="material-icons"
-style={{ fontSize: "20px" }}
->
-delete
-</span>
-}
-onClick={() => onDelete && onDelete(b.id)}
->
-Delete
-</Button>
-</Grid>
-</Grid>
-</CardContent>
-</Card>
-</li>
-))}
-</ul>
+<Table striped bordered hover responsive>
+<thead>
+<tr>
+<th>#</th>
+<th>Customer</th>
+<th>Sport</th>
+<th>Date</th>
+<th>Time Slot</th>
+<th>Duration (hrs)</th>
+{role === "ADMIN" && <th>Actions</th>}
+</tr>
+</thead>
+<tbody>
+{displayed.map((b, idx) => (
+<tr key={b.id}>
+<td>{idx + 1 + (page - 1) * size}</td>
+<td>{b.customerName}</td>
+<td>{b.sportType}</td>
+<td>{b.bookingDate}</td>
+<td>{b.timeSlot}</td>
+<td>{b.duration}</td>
+{role === "ADMIN" && (
+<td>
+<Button variant="danger" size="sm" onClick={() => handleDelete(b.id)}>Delete</Button>
+</td>
 )}
-</Box>
-);
-};
+</tr>
+))}
+{displayed.length === 0 && (
+<tr><td colSpan={role === "ADMIN" ? 7 : 6} className="text-center">No bookings</td></tr>
+)}
+</tbody>
+</Table>
 
-export default BookingList;
+<div className="d-flex justify-content-center">
+<Pagination currentPage={page} totalPages={totalPages} onPageChange={(p) => fetchPage(p)} />
+</div>
+</div>
+);
+}

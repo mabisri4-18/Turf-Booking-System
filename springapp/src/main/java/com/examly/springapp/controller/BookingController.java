@@ -21,7 +21,7 @@ import com.examly.springapp.service.BookingService;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins="https://8081-bafddcaeceecbceaafbacadbcffceabd.premiumproject.examly.io")
+@CrossOrigin(origins = "https://8081-bafddcaeceecbceaafbacadbcffceabd.premiumproject.examly.io")
 @RequestMapping("/api/bookings")
 public class BookingController {
 
@@ -60,6 +60,7 @@ public class BookingController {
     }
 
     // pagination and sorting
+    @GetMapping("/paginated")
     public Page<Booking> getBookingPaginated(
         @RequestParam(defaultValue = "")String customerName,
         @RequestParam(defaultValue = "0")int page,

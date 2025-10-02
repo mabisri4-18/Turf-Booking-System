@@ -109,10 +109,11 @@ public class JWTUtil {
     // }
     private static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-    public static String generateToken(String username)
+    public static String generateToken(String username,String role)
     {
         return Jwts.builder()
         .setSubject(username)
+        .claim("role",role)
         .setIssuer("Abisri")
         .setIssuedAt(new Date())
         .setExpiration(new Date(System.currentTimeMillis()+60*60*1000))

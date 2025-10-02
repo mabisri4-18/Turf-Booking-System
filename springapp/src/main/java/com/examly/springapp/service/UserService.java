@@ -21,6 +21,10 @@ public class UserService{
 
     public void createUser(UserEntity user) {
         user.setPassword(coder.encode(user.getPassword()));
+        if(user.getRole() == null || user.getRole().isEmpty()) 
+        {
+        user.setRole("USER"); // default role
+        }
         userRepository.save(user);
     }
 

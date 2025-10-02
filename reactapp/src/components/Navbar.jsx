@@ -1,58 +1,40 @@
 import React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import { Link as RouterLink } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Navbar, Nav, Container, Button } from "react-bootstrap";
 
-const Navbar = () => {
+export default function AppNavbar() {
+  const navigate = useNavigate();
+  const role = localStorage.getItem("role");
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    localStorage.removeItem("username");
+    navigate("/login");
+  };
+
   return (
-    <AppBar position="static" color="secondary" elevation={3}>
-      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Box display="flex" alignItems="center" gap={2}>
-          {/* Turftime brand text (keeps brand name) */}
-          <Typography
-            variant="h6"
-            component={RouterLink}
-            to="/"
-            sx={{
-              textDecoration: "none",
-              color: "inherit",
-              fontWeight: 700,
-              letterSpacing: 0.3,
-            }}
-          >
-            Turftime
-          </Typography>
-          <Typography
-            variant="caption"
-            sx={{ color: "rgba(255,255,255,0.8)", ml: 1 }}
-          >
-          </Typography>
-        </Box>
+    <Navbar bg="dark" variant="dark" expand="lg">
+      <Container>
+        <Navbar.Brand as={Link} to={role === "ADMIN" ? "/admin/dashboard" : "/user/dashboard"}>
+          TurfBooking
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse>
+          <Nav className="me-auto">
+            {!role && <Nav.Link as={Link} to="/login">Login</Nav.Link>}
+            {!role && <Nav.Link as={Link} to="/register">Register</Nav.Link>}
 
-        <Box>
-          <Button
-            component={RouterLink}
-            to="/"
-            color="inherit"
-            sx={{ textTransform: "none", mr: 1 }}
-          >
-            Home
-          </Button>
-          <Button
-            component={RouterLink}
-            to="/add"
-            color="inherit"
-            sx={{ textTransform: "none" }}
-          >
-            Add Booking
-          </Button>
-        </Box>
-      </Toolbar>
-    </AppBar>
+            {role === "USER" && <Nav.Link as={Link} to="/user/dashboard">Dashboard</Nav.Link>}
+            {role === "USER" && <Nav.Link as={Link} to="/user/history">My Bookings</Nav.Link>}
+
+            {role === "ADMIN" && <Nav.Link as={Link} to="/admin/dashboard">Dashboard</Nav.Link>}
+            {role === "ADMIN" && <Nav.Link as={Link} to="/admin/manage-bookings">Manage Bookings</Nav.Link>}
+            {role === "ADMIN" && <Nav.Link as={Link} to="/admin/analytics">Analytics</Nav.Link>}
+          </Nav>
+          {role && <Button variant="outline-light" onClick={handleLogout}>Logout</Button>}
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
-};
-
-export default Navbar;
+}
