@@ -13,7 +13,7 @@ import com.examly.springapp.model.Booking;
 
 public interface BookingRepository extends JpaRepository<Booking,Long> {
 
-    List<Booking> findBySportType(String sportType);
+     List<Booking> findBySportType(String sportType);
 
     List<Booking> findAllByOrderByBookingDateDesc();
 

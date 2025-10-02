@@ -47,6 +47,13 @@ public class BookingController {
         return bookingService.getBookingsBySport(sportType);
     }
 
+    
+    // Get bookings by facility type
+    // @GetMapping("/byFacilityType")
+    // public List<Booking> getBookingsByFacilityType(@RequestParam String facilityType) {
+    //     return bookingService.getBookingsByFacilityType(facilityType);
+    // }
+
     @DeleteMapping("/{id}")
     public String deleteBooking(@PathVariable Long id)
     {
@@ -74,5 +81,16 @@ public class BookingController {
         Pageable pageable = PageRequest.of(page,size,sort);
         return bookingService.getBookingPaginated(customerName,pageable);
     }
+//      @GetMapping("/paginated")
+//        public Page<Booking> getBookingPaginated(
+//         @RequestParam(defaultValue = "") String customerName,
+//         @RequestParam(defaultValue = "0") int page,
+//         @RequestParam(defaultValue = "5") int size,
+//         @RequestParam(defaultValue = "bookingId") String sortBy,
+//         @RequestParam(defaultValue = "asc") String sortDir)       {
+//     Sort sort = sortDir.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
+//     Pageable pageable = PageRequest.of(page, size, sort);
+//     return bookingService.getBookingPaginated(customerName, pageable);
+//    }
 
 }

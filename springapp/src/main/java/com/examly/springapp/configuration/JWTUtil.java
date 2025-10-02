@@ -10,6 +10,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import com.examly.springapp.model.UserEntity.Role;
+
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
@@ -109,15 +111,15 @@ public class JWTUtil {
     // }
     private static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-    public static String generateToken(String username,String role)
+    public static String generateToken(String username,String roleStr)
     {
         return Jwts.builder()
         .setSubject(username)
-        .claim("role",role)
+        .claim("role",roleStr)
         .setIssuer("Abisri")
         .setIssuedAt(new Date())
         .setExpiration(new Date(System.currentTimeMillis()+60*60*1000))
-        .signWith(key)
+        .signWith(key,SignatureAlgorithm.HS256)
         .compact();
     }
 }

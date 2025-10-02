@@ -72,3 +72,73 @@ public class BookingServiceImpl implements BookingService {
     }
 }
 
+/*package com.examly.springapp.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import com.examly.springapp.exception.BookingNotFoundException;
+import com.examly.springapp.model.Booking;
+import com.examly.springapp.repository.BookingRepository;
+import java.util.List;
+
+@Service
+public class BookingServiceImpl implements BookingService {
+
+    @Autowired
+    private BookingRepository bookingRepository;
+
+    @Override
+    public Booking saveBooking(Booking booking) {
+        return bookingRepository.save(booking);
+    }
+    
+    @Override
+    public List<Booking> getAllBookings() {
+        List<Booking> bookings = bookingRepository.findAll();
+        if (bookings.isEmpty()) {
+            throw new BookingNotFoundException("No bookings found!");
+        }
+        return bookings;
+    }
+
+    @Override
+    public List<Booking> getBookingsBySport(String sportType) {
+        List<Booking> bookings = bookingRepository.findByFacility_Type(facilityType);
+        if (bookings.isEmpty()) {
+            throw new BookingNotFoundException("No bookings found for facility type: " + facilityType);
+        }
+        return bookings;
+    }
+
+    @Override
+    public String deleteBooking(Long id) {
+        if (bookingRepository.existsById(id)) {
+            bookingRepository.deleteById(id);
+            return "Booking deleted successfully!";
+        } else {
+            return "Booking not found!";
+        }
+    }
+
+    @Override
+    public List<Booking> getBookingsSortedByDate() {
+        List<Booking> bookings = bookingRepository.findAllByOrderByBookingDateDesc();
+        if (bookings.isEmpty()) {
+            throw new BookingNotFoundException("No bookings found!");
+        }
+        return bookings;
+    }
+
+    @Override
+    public Page<Booking> getBookingPaginated(String userName, Pageable pageable) {
+        if (!userName.isEmpty()) {
+            return bookingRepository.findByUser_UsernameContainingIgnoreCase(userName, pageable);
+        } else {
+            return bookingRepository.findAll(pageable);
+        }
+    }
+}*/
+

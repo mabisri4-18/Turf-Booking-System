@@ -1,5 +1,4 @@
 package com.examly.springapp.model;
-
 import java.time.LocalDate;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GenerationType;
@@ -20,5 +19,5 @@ public class Booking {
     private LocalDate bookingDate;
     private String timeSlot;
     private int duration;
-
+    private String status;
 }
