@@ -1,54 +1,232 @@
-import React, { useState } from 'react';
-import { createBooking } from '../../api/bookings';
-import { useNavigate, useParams } from 'react-router-dom';
+// import React, { useState } from "react";
+// import axios from "axios";
+
+// const BookingForm = () => {
+//   const [formData, setFormData] = useState({
+//     customerName: "",
+//     sportType: "",
+//     bookingDate: "",
+//     timeSlot: "",
+//     duration: 1,
+//     status: "Pending",
+//   });
+
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({ ...formData, [name]: value });
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     // Simple validation
+//     if (!formData.customerName || !formData.sportType || !formData.bookingDate || !formData.timeSlot) {
+//       return alert("❌ Please fill all required fields");
+//     }
+
+//     try {
+//       const response = await axios.post(
+//         "https://8080-bafddcaeceecbceaafbacadbcffceabd.premiumproject.examly.io/api/bookings/addBooking",
+//         formData
+//       );
+//       console.log("Booking response:", response.data);
+//       alert("✅ Booking created successfully!");
+//       // Reset form
+//       setFormData({
+//         customerName: "",
+//         sportType: "",
+//         bookingDate: "",
+//         timeSlot: "",
+//         duration: 1,
+//         status: "Pending",
+//       });
+//     } catch (error) {
+//       console.error("Booking error:", error.response || error.message);
+//       alert("❌ Booking failed");
+//     }
+//   };
+
+//  return (
+// <div className="min-h-screen flex items-center justify-center bg-gray-100">
+// <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-lg">
+// <h2 className="text-2xl font-bold mb-6 text-center">Book Your Turf</h2>
+// <form onSubmit={handleSubmit} className="space-y-4">
+// <input
+// name="customerName"
+// placeholder="Your Name"
+// value={formData.customerName}
+// onChange={handleChange}
+// className="w-full p-2 border rounded"
+// required
+// />
+// <input
+// name="sportType"
+// placeholder="Sport Type (e.g., Football)"
+// value={formData.sportType}
+// onChange={handleChange}
+// className="w-full p-2 border rounded"
+// required
+// />
+// <input
+// type="date"
+// name="bookingDate"
+// value={formData.bookingDate}
+// onChange={handleChange}
+// className="w-full p-2 border rounded"
+// required
+// />
+// <input
+// name="timeSlot"
+// placeholder="Time Slot (e.g., 5:00 PM - 6:00 PM)"
+// value={formData.timeSlot}
+// onChange={handleChange}
+// className="w-full p-2 border rounded"
+// required
+// />
+// <input
+// type="number"
+// name="duration"
+// placeholder="Duration (in hours)"
+// value={formData.duration}
+// onChange={handleChange}
+// className="w-full p-2 border rounded"
+// min={1}
+// required
+// />
+// <select
+// name="status"
+// value={formData.status}
+// onChange={handleChange}
+// className="w-full p-2 border rounded"
+// >
+// <option value="Pending">Pending</option>
+// <option value="Confirmed">Confirmed</option>
+// </select>
+
+// <button
+// type="submit"
+// className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700"
+// >
+// Proceed to Payment
+// </button>
+// </form>
+// </div>
+// </div>
+// );
+// };
+
+// export default BookingForm;
+
+
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const BookingForm = () => {
-  const { id } = useParams(); // turf id
   const navigate = useNavigate();
-  const [form, setForm] = useState({
-    bookingDate: '',
-    timeSlot: '',
+  const [formData, setFormData] = useState({
+    customerName: "",
+    sportType: "",
+    bookingDate: "",
+    timeSlot: "",
+    duration: 1,
+    status: "Pending",
   });
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await createBooking({ ...form, turfId: id });
-    navigate('/customer/payment'); // redirect to payment
-  };
 
-  return (
-    <div className="p-8 bg-gray-100 min-h-screen flex justify-center items-center">
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-xl shadow w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-6">Book Your Turf</h1>
-        <label className="block mb-2">Booking Date</label>
-        <input
-          type="date"
-          name="bookingDate"
-          value={form.bookingDate}
-          onChange={handleChange}
-          className="w-full mb-4 p-2 border rounded"
-          required
-        />
-        <label className="block mb-2">Time Slot</label>
-        <input
-          type="text"
-          name="timeSlot"
-          value={form.timeSlot}
-          onChange={handleChange}
-          placeholder="e.g. 5:00 PM - 6:00 PM"
-          className="w-full mb-4 p-2 border rounded"
-          required
-        />
-        <button type="submit" className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">
-          Proceed to Payment
-        </button>
-      </form>
-    </div>
-  );
+    if (!formData.customerName || !formData.sportType || !formData.bookingDate || !formData.timeSlot) {
+      return alert("❌ Please fill all required fields");
+    }
+
+    try {
+      const response = await axios.post(
+        "https://8080-bafddcaeceecbceaafbacadbcffceabd.premiumproject.examly.io/api/bookings/addBooking",
+        formData
+      );
+
+      const bookingId = response.data.id;
+      alert("✅ Booking created successfully!");
+      navigate(`/customer/payment/${bookingId}`);
+    } catch (error) {
+      console.error("Booking error:", error.response || error.message);
+      alert("❌ Booking failed");
+    }
+  };
+ 
+return (
+<div className="min-h-screen flex items-center justify-center bg-gray-100">
+<div className="w-full max-w-md bg-white p-8 rounded-xl shadow-lg">
+<h2 className="text-2xl font-bold mb-6 text-center">Book Your Turf</h2>
+<form onSubmit={handleSubmit} className="space-y-4">
+<input
+name="customerName"
+placeholder="Your Name"
+value={formData.customerName}
+onChange={handleChange}
+className="w-full p-2 border rounded"
+required
+/>
+<input
+name="sportType"
+placeholder="Sport Type (e.g., Football)"
+value={formData.sportType}
+onChange={handleChange}
+className="w-full p-2 border rounded"
+required
+/>
+<input
+type="date"
+name="bookingDate"
+value={formData.bookingDate}
+onChange={handleChange}
+className="w-full p-2 border rounded"
+required
+/>
+<input
+name="timeSlot"
+placeholder="Time Slot (e.g., 5:00 PM - 6:00 PM)"
+value={formData.timeSlot}
+onChange={handleChange}
+className="w-full p-2 border rounded"
+required
+/>
+<input
+type="number"
+name="duration"
+placeholder="Duration (in hours)"
+value={formData.duration}
+onChange={handleChange}
+className="w-full p-2 border rounded"
+min={1}
+required
+/>
+<select
+name="status"
+value={formData.status}
+onChange={handleChange}
+className="w-full p-2 border rounded"
+>
+<option value="Pending">Pending</option>
+<option value="Confirmed">Confirmed</option>
+</select>
+
+<button
+type="submit"
+className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700"
+>
+Proceed to Payment
+</button>
+</form>
+</div>
+</div>
+);
 };
 
 export default BookingForm;

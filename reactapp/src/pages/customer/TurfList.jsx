@@ -26,7 +26,7 @@ const TurfList = () => {
             <div className="p-4">
               <h2 className="text-xl font-semibold">{facility.name}</h2>
               <p className="text-gray-600">{facility.type}</p>
-              <Link to={`/customer/bookingform/${facility.id}`}>
+              <Link to={`/customer/booking/${facility.id}`}>
                 <button className="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">
                   Book Now
                 </button>

@@ -1,23 +1,17 @@
 package com.examly.springapp.controller;
 
+import com.examly.springapp.model.Booking;
+import com.examly.springapp.service.BookingService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import com.examly.springapp.model.Booking;
-import com.examly.springapp.service.BookingService;
 import java.util.List;
 
 @RestController
@@ -26,71 +20,50 @@ import java.util.List;
 public class BookingController {
 
     @Autowired
-    BookingService bookingService;
-
+    private BookingService bookingService;
 
     @PostMapping("/addBooking")
-    public Booking addBooking(@RequestBody Booking booking)
-    {
-        return bookingService.saveBooking(booking);
+    public ResponseEntity<Booking> addBooking(@RequestBody Booking booking) {
+        Booking savedBooking = bookingService.saveBooking(booking);
+        return new ResponseEntity<>(savedBooking, HttpStatus.CREATED);
     }
 
     @GetMapping("/allBookings")
-    public List<Booking> getAllBookings()
-    {
-        return bookingService.getAllBookings();
+    public ResponseEntity<List<Booking>> getAllBookings() {
+        List<Booking> bookings = bookingService.getAllBookings();
+        return new ResponseEntity<>(bookings, HttpStatus.OK);
     }
 
     @GetMapping("/bySport")
-    public List<Booking> getBookingsBySport(@RequestParam String sportType)
-    {
-        return bookingService.getBookingsBySport(sportType);
+    public ResponseEntity<List<Booking>> getBookingsBySport(@RequestParam String sportType) {
+        List<Booking> bookings = bookingService.getBookingsBySport(sportType);
+        return new ResponseEntity<>(bookings, HttpStatus.OK);
     }
-
-    
-    // Get bookings by facility type
-    // @GetMapping("/byFacilityType")
-    // public List<Booking> getBookingsByFacilityType(@RequestParam String facilityType) {
-    //     return bookingService.getBookingsByFacilityType(facilityType);
-    // }
 
     @DeleteMapping("/{id}")
-    public String deleteBooking(@PathVariable Long id)
-    {
-        return bookingService.deleteBooking(id);
-    }
+public ResponseEntity<String> deleteBooking(@PathVariable Long id) {
+bookingService.deleteBooking(id);
+return new ResponseEntity<>("Booking deleted successfully!", HttpStatus.OK);
+}
 
-    @GetMapping("/sortedByDate")
-    public List<Booking> getBookingsSortedByDate()
-    {
-        return bookingService.getBookingsSortedByDate();
-    }
+@GetMapping("/sortedByDate")
+public ResponseEntity<List<Booking>> getBookingsSortedByDate() {
+List<Booking> bookings = bookingService.getBookingsSortedByDate();
+return new ResponseEntity<>(bookings, HttpStatus.OK);
+}
 
-    // pagination and sorting
-    @GetMapping("/paginated")
-    public Page<Booking> getBookingPaginated(
-        @RequestParam(defaultValue = "")String customerName,
-        @RequestParam(defaultValue = "0")int page,
-        @RequestParam(defaultValue = "5")int size,
-        @RequestParam(defaultValue = "id")String sortBy,
-        @RequestParam(defaultValue = "asc")String sortDir
-    )
-    {
-        Sort sort = sortDir.equalsIgnoreCase("asc")? Sort.by(sortBy).ascending()
-                                                   : Sort.by(sortBy).descending();
-        Pageable pageable = PageRequest.of(page,size,sort);
-        return bookingService.getBookingPaginated(customerName,pageable);
-    }
-//      @GetMapping("/paginated")
-//        public Page<Booking> getBookingPaginated(
-//         @RequestParam(defaultValue = "") String customerName,
-//         @RequestParam(defaultValue = "0") int page,
-//         @RequestParam(defaultValue = "5") int size,
-//         @RequestParam(defaultValue = "bookingId") String sortBy,
-//         @RequestParam(defaultValue = "asc") String sortDir)       {
-//     Sort sort = sortDir.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
-//     Pageable pageable = PageRequest.of(page, size, sort);
-//     return bookingService.getBookingPaginated(customerName, pageable);
-//    }
+@GetMapping("/paginated")
+public ResponseEntity<Page<Booking>> getBookingPaginated(
+@RequestParam(defaultValue = "") String customerName,
+@RequestParam(defaultValue = "0") int page,
+@RequestParam(defaultValue = "5") int size,
+@RequestParam(defaultValue = "id") String sortBy,
+@RequestParam(defaultValue = "asc") String sortDir) {
 
+Sort sort = sortDir.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
+Pageable pageable = PageRequest.of(page, size, sort);
+Page<Booking> bookings = bookingService.getBookingPaginated(customerName, pageable);
+
+return new ResponseEntity<>(bookings, HttpStatus.OK);
+}
 }

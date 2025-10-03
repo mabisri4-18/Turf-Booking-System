@@ -16,7 +16,7 @@ const ProtectedRoute = ({ children, role }) => {
   }
 
   // If role is specified and user's role does not match, redirect to home/dashboard
-  if (role && user.role !== role) {
+  if (role && user.role.toUpperCase() !== role.toUpperCase()) {
     return <Navigate to="/" replace />;
   }
 

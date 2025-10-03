@@ -1,35 +1,91 @@
-import React, { useEffect, useState } from 'react';
-import { getBookingsByCustomer } from '../../api/bookings';
+import React, { useEffect, useState } from "react";
+import { getBookings, deleteBooking } from "../../api/bookings";
 
 const Dashboard = () => {
   const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
+  // Fetch bookings from backend
   const fetchBookings = async () => {
-    const res = await getBookingsByCustomer(); // API returns customer bookings
-    setBookings(res.data || []);
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await getBookings(); // Axios returns { data: [...] }
+      // Ensure we always have an array
+      if (Array.isArray(response.data)) {
+        setBookings(response.data);
+      } else if (response.data && response.data.content) {
+        // if backend returns paginated object { content: [...] }
+        setBookings(response.data.content);
+      } else {
+        console.warn("Unexpected bookings response:", response.data);
+        setBookings([]);
+      }
+    } catch (err) {
+      console.error("Error fetching bookings:", err);
+      setError("Failed to fetch bookings. Please try again later.");
+      setBookings([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  useEffect(() => { fetchBookings(); }, []);
+  // Delete a booking
+  const handleDelete = async (id) => {
+    try {
+      await deleteBooking(id);
+      setBookings(bookings.filter((b) => b.id !== id));
+    } catch (err) {
+      console.error("Error deleting booking:", err);
+      setError("Failed to delete booking.");
+    }
+  };
+
+  useEffect(() => {
+    fetchBookings();
+  }, []);
+
+  if (loading) return <p>Loading bookings...</p>;
+  if (error) return <p style={{ color: "red" }}>{error}</p>;
 
   return (
-    <div className="p-8 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-bold mb-6">My Dashboard</h1>
-      <h2 className="text-xl font-semibold mb-4">Upcoming Bookings</h2>
-      {bookings.length === 0 ? (
-        <p className="text-gray-600">No bookings yet.</p>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {bookings.map(b => (
-            <div key={b.id} className="bg-white rounded-xl shadow overflow-hidden p-4">
-              <h3 className="text-lg font-semibold">{b.sportType}</h3>
-              <p className="text-gray-600">Date: {b.bookingDate}</p>
-              <p className="text-gray-600">Time: {b.timeSlot}</p>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
+<div>
+<h2>All Bookings</h2>
+{bookings.length === 0 ? (
+<p>No bookings found.</p>
+) : (
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Customer Name</th>
+<th>Sport Type</th>
+<th>Booking Date</th>
+<th>Time Slot</th>
+<th>Duration</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+{bookings.map((booking) => (
+<tr key={booking.id}>
+<td>{booking.id}</td>
+<td>{booking.customerName}</td>
+<td>{booking.sportType}</td>
+<td>{booking.bookingDate}</td>
+<td>{booking.timeSlot}</td>
+<td>{booking.duration}</td>
+<td>
+<button onClick={() => handleDelete(booking.id)}>Delete</button>
+</td>
+</tr>
+))}
+</tbody>
+</table>
+)}
+</div>
+);
 };
 
 export default Dashboard;

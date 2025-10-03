@@ -29,7 +29,7 @@ const Register = () => {
         {/* Left Image */}
         <div className="hidden md:block md:w-1/2">
           <img
-            src="https://images.unsplash.com/photo-1623054927452-4bda2d0ed66f?auto=format&fit=crop&w=800&q=80"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh51bAyu0jORBOCHiqq1K2NEV6kWfV0ojqDXhJUQW0X1Yz3MXylgZZkmpGXLeFTqnqXiM&usqp=CAU"
             alt="Register"
             className="h-full w-full object-cover"
           />

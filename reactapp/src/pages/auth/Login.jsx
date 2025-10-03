@@ -12,11 +12,28 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const user = await authenticate(email, password);
-    if (user) {
-      navigate(user.role === 'ADMIN' ? '/admin/dashboard' : '/customer/dashboard');
-    } else {
-      setError('Invalid email or password');
+    setError('');
+
+    try {
+      const user = await authenticate(email, password);
+
+      if (user && user.role) {
+        // Navigate based on role
+        if (user.role === 'ADMIN') {
+          navigate('/admin/dashboard');
+        } else if (user.role === 'CUSTOMER') {
+          navigate('/');
+        } else if (user.role === 'STAFF') {
+          navigate('/staff/dashboard');
+        } else {
+          setError('User role not recognized');
+        }
+      } else {
+        setError('Invalid email or password');
+      }
+    } catch (err) {
+      console.error(err);
+      setError('Login failed. Please try again.');
     }
   };
 
@@ -26,8 +43,8 @@ const Login = () => {
         {/* Left Image */}
         <div className="hidden md:block md:w-1/2">
           <img
-            src="https://images.unsplash.com/photo-1573164574399-3f5f6a5f7b03?auto=format&fit=crop&w=800&q=80"
-            onError={(e) => e.target.src = '/assets/login.jpg'}
+            src="https://t3.ftcdn.net/jpg/14/73/24/10/360_F_1473241031_E3UnPjfcWfB7BE5zZKAtb93cVyYKdGXo.jpg"
+            onError={(e) => (e.target.src = '/assets/login.jpg')}
             alt="Login"
             className="h-full w-full object-cover"
           />

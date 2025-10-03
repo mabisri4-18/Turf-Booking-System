@@ -1,23 +1,14 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_URL = 'http://localhost:8080/payments';
+const BASE_URL = "https://8080-bafddcaeceecbceaafbacadbcffceabd.premiumproject.examly.io/api/payments";
 
-// Make payment
-export const makePayment = async (paymentData) => {
-  return await axios.post(API_URL, paymentData);
-};
+export const makePayment = (payment) => axios.post(`${BASE_URL}/addPayment`, payment);
 
 // Get all payments
-export const getPayments = async () => {
-  return await axios.get(API_URL);
-};
+export const getPayments = () => axios.get(`${BASE_URL}/allPayments`);
 
-// Get payments by status
-export const getPaymentsByStatus = async (status) => {
-  return await axios.get(`${API_URL}?status=${status}`);
-};
+// Get payment(s) by booking ID
+export const getPaymentsByBooking = (bookingId) => axios.get(`${BASE_URL}/booking/${bookingId}`);
 
 // Delete payment
-export const deletePayment = async (id) => {
-  return await axios.delete(`${API_URL}/${id}`);
-};
+export const deletePayment = (paymentId) => axios.delete(`${BASE_URL}/${paymentId}`);

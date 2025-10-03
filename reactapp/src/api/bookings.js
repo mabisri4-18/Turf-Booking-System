@@ -1,9 +1,13 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8080/api';
+const BASE_URL = 'https://8080-bafddcaeceecbceaafbacadbcffceabd.premiumproject.examly.io/api/bookings';
 
-// Bookings
-export const createBooking = (data) => axios.post(`${BASE_URL}/bookings`, data);
-export const getBookings = () => axios.get(`${BASE_URL}/bookings`);
-export const getBookingsByCustomer = (customerId) => axios.get(`${BASE_URL}/bookings/customer/${customerId}`);
-export const deleteBooking = (id) => axios.delete(`${BASE_URL}/bookings/${id}`);
+export const createBooking = (data) => axios.post(`${BASE_URL}/addBooking`, data);
+export const getBookings = () => axios.get(`${BASE_URL}/allBookings`);
+export const getBookingsByCustomer = (customerName = "", page = 0, size = 5) =>
+  axios.get(
+    `${BASE_URL}/paginated?customerName=${customerName}&page=${page}&size=${size}`
+  );
+export const deleteBooking = (id) => axios.delete(`${BASE_URL}/${id}`);
+
+

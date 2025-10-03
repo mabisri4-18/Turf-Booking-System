@@ -1,3 +1,72 @@
+// import React from 'react';
+// import Navbar from './components/Navbar';
+// import Footer from './components/Footer';
+// import ProtectedRoute from './components/ProtectedRoute';
+// import { Routes, Route } from 'react-router-dom';
+
+// // Auth Pages
+// import Login from './pages/auth/Login';
+// import Register from './pages/auth/Register';
+
+// // Customer Pages
+// import Dashboard from './pages/customer/Dashboard';
+// import TurfList from './pages/customer/TurfList';
+// import BookingForm from './pages/customer/BookingForm';
+// import Payment from './pages/customer/Payment';
+// import BookingHistory from './pages/customer/BookingHistory';
+
+// // Admin Pages
+// import AdminDashboard from './pages/admin/Dashboard';
+// import UserManagement from './pages/admin/UserManagement';
+// import BookingManagement from './pages/admin/BookingManagement';
+// import FacilityManagement from './pages/admin/FacilityManagement';
+// import PaymentManagement from './pages/admin/PaymentManagement';
+// import MaintenanceManagement from './pages/admin/MaintenanceManagement';
+
+// // Staff Pages
+// import StaffDashboard from './pages/staff/Dashboard';
+// import MaintenanceTasks from './pages/staff/MaintenanceTasks';
+
+// // Other
+// import NotFound from './pages/NotFound';
+
+// function App() {
+//   return (
+//     <>
+//       <Navbar />
+//       <Routes>
+//         {/* Auth */}
+//         <Route path="/login" element={<Login />} />
+//         <Route path="/register" element={<Register />} />
+
+//         {/* Customer */}
+//         <Route path="/" element={<ProtectedRoute role="CUSTOMER"><Dashboard /></ProtectedRoute>} />
+//         <Route path="/turfs" element={<ProtectedRoute role="CUSTOMER"><TurfList /></ProtectedRoute>} />
+//         <Route path="/booking/:id" element={<ProtectedRoute role="CUSTOMER"><BookingForm /></ProtectedRoute>} />
+//         <Route path="/payment/:id" element={<ProtectedRoute role="CUSTOMER"><Payment /></ProtectedRoute>} />
+//         <Route path="/bookings" element={<ProtectedRoute role="CUSTOMER"><BookingHistory /></ProtectedRoute>} />
+
+//        {/* Admin */}
+// <Route path="/admin/dashboard" element={<ProtectedRoute role="ADMIN"><AdminDashboard /></ProtectedRoute>} />
+// <Route path="/admin/users" element={<ProtectedRoute role="ADMIN"><UserManagement /></ProtectedRoute>} />
+// <Route path="/admin/bookings" element={<ProtectedRoute role="ADMIN"><BookingManagement /></ProtectedRoute>} />
+// <Route path="/admin/facilities" element={<ProtectedRoute role="ADMIN"><FacilityManagement /></ProtectedRoute>} />
+// <Route path="/admin/payments" element={<ProtectedRoute role="ADMIN"><PaymentManagement /></ProtectedRoute>} />
+// <Route path="/admin/maintenance" element={<ProtectedRoute role="ADMIN"><MaintenanceManagement /></ProtectedRoute>} />
+
+// {/* Staff */}
+// <Route path="/staff/dashboard" element={<ProtectedRoute role="STAFF"><StaffDashboard /></ProtectedRoute>} />
+// <Route path="/staff/tasks/:id" element={<ProtectedRoute role="STAFF"><MaintenanceTasks /></ProtectedRoute>} />
+
+// {/* 404 */}
+// <Route path="*" element={<NotFound />} />
+// </Routes>
+// <Footer />
+// </>
+// );
+// }
+
+// export default App;
 import React from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -30,23 +99,29 @@ import MaintenanceTasks from './pages/staff/MaintenanceTasks';
 // Other
 import NotFound from './pages/NotFound';
 
+// Hero Section
+import HeroSection from './components/HeroSection';
+
 function App() {
   return (
     <>
       <Navbar />
       <Routes>
+        {/* Public Landing */}
+        <Route path="/" element={<HeroSection />} />
+
         {/* Auth */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
         {/* Customer */}
-        <Route path="/" element={<ProtectedRoute role="CUSTOMER"><Dashboard /></ProtectedRoute>} />
-        <Route path="/turfs" element={<ProtectedRoute role="CUSTOMER"><TurfList /></ProtectedRoute>} />
-        <Route path="/booking/:id" element={<ProtectedRoute role="CUSTOMER"><BookingForm /></ProtectedRoute>} />
-        <Route path="/payment/:id" element={<ProtectedRoute role="CUSTOMER"><Payment /></ProtectedRoute>} />
-        <Route path="/bookings" element={<ProtectedRoute role="CUSTOMER"><BookingHistory /></ProtectedRoute>} />
+        <Route path="/customer/dashboard" element={<ProtectedRoute role="CUSTOMER"><Dashboard /></ProtectedRoute>} />
+        <Route path="/customer/turfs" element={<ProtectedRoute role="CUSTOMER"><TurfList /></ProtectedRoute>} />
+        <Route path="/customer/booking/:id" element={<ProtectedRoute role="CUSTOMER"><BookingForm /></ProtectedRoute>} />
+        <Route path="/customer/payment/:id" element={<ProtectedRoute role="CUSTOMER"><Payment /></ProtectedRoute>} />
+        <Route path="/customer/bookings" element={<ProtectedRoute role="CUSTOMER"><BookingHistory /></ProtectedRoute>} />
 
-       {/* Admin */}
+      {/* Admin */}
 <Route path="/admin/dashboard" element={<ProtectedRoute role="ADMIN"><AdminDashboard /></ProtectedRoute>} />
 <Route path="/admin/users" element={<ProtectedRoute role="ADMIN"><UserManagement /></ProtectedRoute>} />
 <Route path="/admin/bookings" element={<ProtectedRoute role="ADMIN"><BookingManagement /></ProtectedRoute>} />
