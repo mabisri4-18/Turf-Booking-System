@@ -1,40 +1,30 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Navbar, Nav, Container, Button } from "react-bootstrap";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
-export default function AppNavbar() {
-  const navigate = useNavigate();
-  const role = localStorage.getItem("role");
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("role");
-    localStorage.removeItem("username");
-    navigate("/login");
-  };
+const Navbar = () => {
+  const { user, logout } = useAuth();
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
-      <Container>
-        <Navbar.Brand as={Link} to={role === "ADMIN" ? "/admin/dashboard" : "/user/dashboard"}>
-          TurfBooking
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse>
-          <Nav className="me-auto">
-            {!role && <Nav.Link as={Link} to="/login">Login</Nav.Link>}
-            {!role && <Nav.Link as={Link} to="/register">Register</Nav.Link>}
-
-            {role === "USER" && <Nav.Link as={Link} to="/user/dashboard">Dashboard</Nav.Link>}
-            {role === "USER" && <Nav.Link as={Link} to="/user/history">My Bookings</Nav.Link>}
-
-            {role === "ADMIN" && <Nav.Link as={Link} to="/admin/dashboard">Dashboard</Nav.Link>}
-            {role === "ADMIN" && <Nav.Link as={Link} to="/admin/manage-bookings">Manage Bookings</Nav.Link>}
-            {role === "ADMIN" && <Nav.Link as={Link} to="/admin/analytics">Analytics</Nav.Link>}
-          </Nav>
-          {role && <Button variant="outline-light" onClick={handleLogout}>Logout</Button>}
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <nav className="bg-green-600 text-white p-4 flex justify-between items-center shadow-md">
+      <Link to="/" className="text-2xl font-bold">TurfTime</Link>
+      <div className="flex items-center space-x-4">
+        <Link to="/customer/dashboard" className="hover:underline">Dashboard</Link>
+        {user?.role === 'ADMIN' && <Link to="/admin/dashboard" className="hover:underline">Admin</Link>}
+        {user ? (
+          <>
+            <span className="font-semibold">Hi, {user.username}</span>
+            <button onClick={logout} className="bg-white text-green-600 px-3 py-1 rounded hover:bg-gray-100">Logout</button>
+          </>
+        ) : (
+          <>
+            <Link to="/login" className="hover:underline">Login</Link>
+            <Link to="/register" className="bg-white text-green-600 px-3 py-1 rounded hover:bg-gray-100">Register</Link>
+          </>
+        )}
+      </div>
+    </nav>
   );
-}
+};
+
+export default Navbar;

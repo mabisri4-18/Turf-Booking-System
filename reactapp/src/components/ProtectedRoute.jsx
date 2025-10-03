@@ -1,15 +1,27 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 /**
- * ProtectedRoute: checks for token and optional role.
- * Expects localStorage keys: token, role
+ * ProtectedRoute Component
+ * - children: the component to render if authorized
+ * - role: optional, the role required to access the route
  */
-export default function ProtectedRoute({ children, role }) {
-  const token = localStorage.getItem("token");
-  const userRole = localStorage.getItem("role");
+const ProtectedRoute = ({ children, role }) => {
+  const { user } = useAuth();
 
-  if (!token) return <Navigate to="/login" replace />;
-  if (role && userRole !== role) return <Navigate to="/login" replace />;
+  // If user is not logged in, redirect to login
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  // If role is specified and user's role does not match, redirect to home/dashboard
+  if (role && user.role !== role) {
+    return <Navigate to="/" replace />;
+  }
+
+  // Otherwise, render the component
   return children;
-}
+};
+
+export default ProtectedRoute;

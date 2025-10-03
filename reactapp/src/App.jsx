@@ -1,63 +1,69 @@
-import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import AppNavbar from "./components/Navbar";
-import ProtectedRoute from "./components/ProtectedRoute";
+import React from 'react';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import ProtectedRoute from './components/ProtectedRoute';
+import { Routes, Route } from 'react-router-dom';
 
-// Auth pages
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
+// Auth Pages
+import Login from './pages/auth/Login';
+import Register from './pages/auth/Register';
 
-// User pages
-import UserDashboard from "./pages/user/Dashboard";
-import AddBooking from "./pages/user/AddBooking";
-import Payment from "./pages/user/Payment";
-import History from "./pages/user/History";
+// Customer Pages
+import Dashboard from './pages/customer/Dashboard';
+import TurfList from './pages/customer/TurfList';
+import BookingForm from './pages/customer/BookingForm';
+import Payment from './pages/customer/Payment';
+import BookingHistory from './pages/customer/BookingHistory';
 
-// Admin pages
-import AdminDashboard from "./pages/admin/Dashboard";
-import ManageBookings from "./pages/admin/ManageBookings";
-import Analytics from "./pages/admin/Analytics";
+// Admin Pages
+import AdminDashboard from './pages/admin/Dashboard';
+import UserManagement from './pages/admin/UserManagement';
+import BookingManagement from './pages/admin/BookingManagement';
+import FacilityManagement from './pages/admin/FacilityManagement';
+import PaymentManagement from './pages/admin/PaymentManagement';
+import MaintenanceManagement from './pages/admin/MaintenanceManagement';
 
-export default function App() {
+// Staff Pages
+import StaffDashboard from './pages/staff/Dashboard';
+import MaintenanceTasks from './pages/staff/MaintenanceTasks';
+
+// Other
+import NotFound from './pages/NotFound';
+
+function App() {
   return (
-    <div>
-      <AppNavbar />
-      <div className="container mt-4">
-        <Routes>
-          <Route path="/" element={<Navigate to="/login" />} />
+    <>
+      <Navbar />
+      <Routes>
+        {/* Auth */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-          {/* Auth */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+        {/* Customer */}
+        <Route path="/" element={<ProtectedRoute role="CUSTOMER"><Dashboard /></ProtectedRoute>} />
+        <Route path="/turfs" element={<ProtectedRoute role="CUSTOMER"><TurfList /></ProtectedRoute>} />
+        <Route path="/booking/:id" element={<ProtectedRoute role="CUSTOMER"><BookingForm /></ProtectedRoute>} />
+        <Route path="/payment/:id" element={<ProtectedRoute role="CUSTOMER"><Payment /></ProtectedRoute>} />
+        <Route path="/bookings" element={<ProtectedRoute role="CUSTOMER"><BookingHistory /></ProtectedRoute>} />
 
-          {/* User routes */}
-          <Route path="/user/dashboard" element={
-            <ProtectedRoute role="USER"><UserDashboard /></ProtectedRoute>
-          }/>
-          <Route path="/user/add-booking" element={
-            <ProtectedRoute role="USER"><AddBooking /></ProtectedRoute>
-          }/>
-          <Route path="/user/payment" element={
-            <ProtectedRoute role="USER"><Payment /></ProtectedRoute>
-          }/>
-          <Route path="/user/history" element={
-            <ProtectedRoute role="USER"><History /></ProtectedRoute>
-          }/>
+       {/* Admin */}
+<Route path="/admin/dashboard" element={<ProtectedRoute role="ADMIN"><AdminDashboard /></ProtectedRoute>} />
+<Route path="/admin/users" element={<ProtectedRoute role="ADMIN"><UserManagement /></ProtectedRoute>} />
+<Route path="/admin/bookings" element={<ProtectedRoute role="ADMIN"><BookingManagement /></ProtectedRoute>} />
+<Route path="/admin/facilities" element={<ProtectedRoute role="ADMIN"><FacilityManagement /></ProtectedRoute>} />
+<Route path="/admin/payments" element={<ProtectedRoute role="ADMIN"><PaymentManagement /></ProtectedRoute>} />
+<Route path="/admin/maintenance" element={<ProtectedRoute role="ADMIN"><MaintenanceManagement /></ProtectedRoute>} />
 
-          {/* Admin routes */}
-          <Route path="/admin/dashboard" element={
-            <ProtectedRoute role="ADMIN"><AdminDashboard /></ProtectedRoute>
-          }/>
-          <Route path="/admin/manage-bookings" element={
-            <ProtectedRoute role="ADMIN"><ManageBookings /></ProtectedRoute>
-          }/>
-          <Route path="/admin/analytics" element={
-            <ProtectedRoute role="ADMIN"><Analytics /></ProtectedRoute>
-          }/>
+{/* Staff */}
+<Route path="/staff/dashboard" element={<ProtectedRoute role="STAFF"><StaffDashboard /></ProtectedRoute>} />
+<Route path="/staff/tasks/:id" element={<ProtectedRoute role="STAFF"><MaintenanceTasks /></ProtectedRoute>} />
 
-          <Route path="*" element={<h3>Page not found</h3>} />
-        </Routes>
-      </div>
-    </div>
-  );
+{/* 404 */}
+<Route path="*" element={<NotFound />} />
+</Routes>
+<Footer />
+</>
+);
 }
+
+export default App;

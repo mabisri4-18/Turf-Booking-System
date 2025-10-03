@@ -1,48 +1,109 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { registerUser } from "../../services/api";
-import { TextField, Button, Card } from "@mui/material";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
-export default function Register() {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirm, setConfirm] = useState("");
+const Register = () => {
   const navigate = useNavigate();
+  const { createUser } = useAuth();
 
-  const handleSubmit = async (e) => {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleRegister = async (e) => {
     e.preventDefault();
-    if (password !== confirm) return alert("Passwords do not match");
-    try {
-      await registerUser({ username, email, password });
-      alert("Registered successfully. Please login.");
-      navigate("/login");
-    } catch (err) {
-      console.error(err);
-      alert("Registration failed.");
+    if (password !== confirmPassword) {
+      setError("Passwords don't match");
+      return;
     }
+    await createUser({ username, email, password });
+    navigate('/login');
   };
 
   return (
-    <Card style={{ maxWidth: 480, margin: "2rem auto", padding: "1.5rem" }}>
-      <h4 className="mb-3">Register</h4>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-2">
-          <TextField label="Username" fullWidth value={username} onChange={(e) => setUsername(e.target.value)} />
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white shadow-lg rounded-xl flex w-4/5 max-w-4xl overflow-hidden">
+
+        {/* Left Image */}
+        <div className="hidden md:block md:w-1/2">
+          <img
+            src="https://images.unsplash.com/photo-1623054927452-4bda2d0ed66f?auto=format&fit=crop&w=800&q=80"
+            alt="Register"
+            className="h-full w-full object-cover"
+          />
         </div>
-        <div className="mb-2">
-          <TextField label="Email" fullWidth value={email} onChange={(e) => setEmail(e.target.value)} />
-        </div>
-        <div className="mb-2">
-          <TextField label="Password" type="password" fullWidth value={password} onChange={(e) => setPassword(e.target.value)} />
-        </div>
-        <div className="mb-3">
-          <TextField label="Confirm Password" type="password" fullWidth value={confirm} onChange={(e) => setConfirm(e.target.value)} />
-        </div>
-        <div className="d-flex justify-content-end">
-          <Button variant="contained" type="submit">Register</Button>
-        </div>
-      </form>
-    </Card>
-  );
-}
+        {/* Right Form */}
+<div className="w-full md:w-1/2 p-10">
+<h2 className="text-3xl font-bold text-gray-800 mb-6">Create Account</h2>
+{error && <p className="text-red-500 mb-4">{error}</p>}
+<form onSubmit={handleRegister} className="space-y-5">
+<div>
+<label className="block text-gray-700 mb-2">Username</label>
+<input
+type="text"
+value={username}
+onChange={(e) => setUsername(e.target.value)}
+className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+placeholder="John Doe"
+required
+/>
+</div>
+<div>
+<label className="block text-gray-700 mb-2">Email</label>
+<input
+type="email"
+value={email}
+onChange={(e) => setEmail(e.target.value)}
+className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+placeholder="example@email.com"
+required
+/>
+</div>
+<div>
+<label className="block text-gray-700 mb-2">Password</label>
+<input
+type="password"
+value={password}
+onChange={(e) => setPassword(e.target.value)}
+className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+placeholder="********"
+required
+/>
+</div>
+<div>
+<label className="block text-gray-700 mb-2">Confirm Password</label>
+<input
+type="password"
+value={confirmPassword}
+onChange={(e) => setConfirmPassword(e.target.value)}
+className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+placeholder="********"
+required
+/>
+</div>
+<button
+type="submit"
+className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors"
+>
+Register
+</button>
+<p className="text-sm text-gray-500 text-center mt-4">
+Already have an account?{' '}
+<span
+onClick={() => navigate('/login')}
+className="text-blue-600 cursor-pointer hover:underline"
+>
+Login
+</span>
+</p>
+</form>
+</div>
+</div>
+</div>
+);
+};
+
+export default Register;
+

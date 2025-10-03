@@ -1,63 +1,88 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { loginUser } from "../../services/api";
-import { TextField, Button, Card } from "@mui/material";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const Login = () => {
   const navigate = useNavigate();
+  const { authenticate } = useAuth();
 
-  const handleSubmit = async (e) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-      const res = await loginUser(email, password);
-      // Backend ideally should return { token, role, username }.
-      // If your backend only returns "Logged in", modify it to return token and role.
-      const data = res.data;
-      // Attempt to extract token & role:
-      const token = data?.token || data?.accessToken || (typeof data === "string" ? null : null);
-      const role = data?.role || data?.userRole || (email === "admin" ? "ADMIN" : "USER");
-
-      if (token) {
-        localStorage.setItem("token", token);
-        localStorage.setItem("role", role);
-        localStorage.setItem("username", email);
-        if (role === "ADMIN") navigate("/admin/dashboard");
-        else navigate("/user/dashboard");
-      } else {
-        // Fallback: backend didn't return token. We'll store a fake token for dev convenience
-        // (Prefer: change backend to return token)
-        console.warn("No token in login response - using fallback token. Update backend to return token.");
-        localStorage.setItem("token", "dev-fallback-token");
-        // heuristic: treat 'admin' email as ADMIN if backend doesn't supply role
-        const guessedRole = email.includes("admin") ? "ADMIN" : "USER";
-        localStorage.setItem("role", guessedRole);
-        localStorage.setItem("username", email);
-        if (guessedRole === "ADMIN") navigate("/admin/dashboard");
-        else navigate("/user/dashboard");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Login failed. Check console for details.");
+    const user = await authenticate(email, password);
+    if (user) {
+      navigate(user.role === 'ADMIN' ? '/admin/dashboard' : '/customer/dashboard');
+    } else {
+      setError('Invalid email or password');
     }
   };
 
-return (
-<Card style={{ maxWidth: 480, margin: "2rem auto", padding: "1.5rem" }}>
-<h4 className="mb-3">Login</h4>
-<form onSubmit={handleSubmit}>
-<div className="mb-3">
-<TextField label="Email" fullWidth value={email} onChange={(e) => setEmail(e.target.value)} />
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white shadow-lg rounded-xl flex w-4/5 max-w-4xl overflow-hidden">
+        {/* Left Image */}
+        <div className="hidden md:block md:w-1/2">
+          <img
+            src="https://images.unsplash.com/photo-1573164574399-3f5f6a5f7b03?auto=format&fit=crop&w=800&q=80"
+            onError={(e) => e.target.src = '/assets/login.jpg'}
+            alt="Login"
+            className="h-full w-full object-cover"
+          />
+        </div>
+
+       {/* Right Form */}
+<div className="w-full md:w-1/2 p-10">
+<h2 className="text-3xl font-bold text-gray-800 mb-6">Welcome Back!</h2>
+{error && <p className="text-red-500 mb-4">{error}</p>}
+<form onSubmit={handleLogin} className="space-y-5">
+<div>
+<label htmlFor="email" className="block text-gray-700 mb-2">Email</label>
+<input
+id="email"
+type="email"
+value={email}
+onChange={(e) => setEmail(e.target.value)}
+className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+placeholder="example@email.com"
+required
+/>
 </div>
-<div className="mb-3">
-<TextField label="Password" type="password" fullWidth value={password} onChange={(e) => setPassword(e.target.value)} />
+<div>
+<label htmlFor="password" className="block text-gray-700 mb-2">Password</label>
+<input
+id="password"
+type="password"
+value={password}
+onChange={(e) => setPassword(e.target.value)}
+className="w-full border border-gray-300 px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+placeholder="********"
+required
+/>
 </div>
-<div className="d-flex justify-content-between">
-<Button variant="contained" type="submit">Login</Button>
-<Button variant="outlined" onClick={() => navigate("/register")}>Register</Button>
-</div>
+<button
+type="submit"
+aria-label="Login"
+className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
+>
+Login
+</button>
+<p className="text-sm text-gray-500 text-center mt-4">
+Don't have an account?{' '}
+<span
+onClick={() => navigate('/register')}
+className="text-blue-600 cursor-pointer hover:underline"
+>
+Sign Up
+</span>
+</p>
 </form>
-</Card>
+</div>
+</div>
+</div>
 );
-}
+};
+
+export default Login;

@@ -1,22 +1,21 @@
-import React from "react";
-import { Card, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React from 'react';
 
-/**
- * Shows a turf card.
- * turf: { id, name, sportType, slots }
- */
-export default function BookingCard({ turf }) {
+const BookingCard = ({ booking }) => {
   return (
-    <Card style={{ width: "18rem", marginBottom: "1rem" }}>
-      <Card.Body>
-        <Card.Title>{turf.name}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">{turf.sportType}</Card.Subtitle>
-        <Card.Text>Available slots: {turf.slots}</Card.Text>
-        <Button as={Link} to="/user/add-booking" state={{ sportType: turf.sportType }}>
-          Book Now
-        </Button>
-      </Card.Body>
-    </Card>
+    <div className="border rounded-lg shadow p-4 m-2 w-full flex justify-between items-center hover:shadow-xl transition">
+      <div>
+        <h2 className="text-lg font-bold">{booking.facility.name}</h2>
+        <p>Sport: {booking.sportType}</p>
+        <p>Date: {booking.bookingDate}</p>
+        <p>Time: {booking.timeSlot}</p>
+      </div>
+      <div>
+        <p className={`font-semibold ${booking.status === 'completed' ? 'text-green-600' : 'text-red-600'}`}>
+          {booking.status}
+        </p>
+      </div>
+    </div>
   );
-}
+};
+
+export default BookingCard;
