@@ -137,7 +137,7 @@ public class SecurityConfig {
            .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/auth/**","/api/**").permitAll()
                 .anyRequest().authenticated()
-        ).formLogin(Customizer.withDefaults());
+        );
         return http.build();
     }
     @Bean

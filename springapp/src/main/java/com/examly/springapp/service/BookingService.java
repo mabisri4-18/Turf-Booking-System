@@ -15,7 +15,7 @@ public interface BookingService {
 
     List<Booking> getBookingsBySport(String sportType);
 
-    String deleteBooking(Long id);
+    boolean deleteBooking(Long id);
 
     List<Booking> getBookingsSortedByDate();
 

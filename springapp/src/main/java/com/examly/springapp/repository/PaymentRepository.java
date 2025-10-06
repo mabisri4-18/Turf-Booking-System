@@ -10,4 +10,6 @@ import org.springframework.data.domain.Pageable;
 public interface PaymentRepository extends JpaRepository<Payment, Long> {
 
     Page<Payment> findByPaymentStatusContainingIgnoreCase(String status, Pageable pageable);
+
+    void deleteByBookingId(Long id);
 }

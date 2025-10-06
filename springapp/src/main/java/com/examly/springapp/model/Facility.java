@@ -1,5 +1,7 @@
 package com.examly.springapp.model;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.Data;
 

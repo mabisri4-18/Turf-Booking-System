@@ -147,6 +147,9 @@ package com.examly.springapp.service;
 import com.examly.springapp.exception.BookingNotFoundException;
 import com.examly.springapp.model.Booking;
 import com.examly.springapp.repository.BookingRepository;
+import com.examly.springapp.repository.PaymentRepository;
+
+import jakarta.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -160,6 +163,11 @@ public class BookingServiceImpl implements BookingService {
 
     @Autowired
     private BookingRepository bookingRepository;
+
+    @Autowired
+     private PaymentRepository paymentRepository;
+
+
 
     @Override
     public Booking saveBooking(Booking booking) {
@@ -184,15 +192,30 @@ public class BookingServiceImpl implements BookingService {
         return bookings;
     }
 
-    @Override
-public String deleteBooking(Long id) {
+//     @Override
+// public String deleteBooking(Long id) {
+//     if (bookingRepository.existsById(id)) {
+//         bookingRepository.deleteById(id);
+//         return "Booking deleted successfully!";
+//     } else {
+//         return "Booking not found!";
+//     }
+// }
+      @Override
+      @Transactional
+    public boolean deleteBooking(Long id) {
     if (bookingRepository.existsById(id)) {
+        // Delete all payments related to this booking first
+        paymentRepository.deleteByBookingId(id);
+
+        // Now delete the booking
         bookingRepository.deleteById(id);
-        return "Booking deleted successfully!";
+        return true;
     } else {
-        return "Booking not found!";
+        return false;
     }
 }
+
 
     @Override
     public List<Booking> getBookingsSortedByDate() {
