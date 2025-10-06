@@ -125,4 +125,19 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(res);
         }
     }
+
+    @DeleteMapping("/users/{id}")
+public ResponseEntity<Map<String, String>> deleteUser(@PathVariable Long id) {
+    boolean deleted = userService.deleteUserById(id); // implement this in UserService
+
+    Map<String, String> res = new HashMap<>();
+    if (deleted) {
+        res.put("message", "User deleted successfully!");
+        return ResponseEntity.ok(res);
+    } else {
+        res.put("error", "User not found");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(res);
+    }
+}
+
 }

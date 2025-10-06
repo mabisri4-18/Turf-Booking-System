@@ -41,6 +41,6 @@ export const saveFacility = async (facility) => {
 };
 
 // ✅ Delete facility
-export const deleteFacility = async (id) => {
-  return await axios.delete(`${API_URL}/${id}`);
+export const deleteFacility = async (facilityId) => {
+  return await axios.delete(`${API_URL}/${facilityId}`);
 };

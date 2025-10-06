@@ -48,4 +48,13 @@ public class UserService {
         }
         return null; // invalid credentials
     }
+
+    public boolean deleteUserById(Long id) {
+    if(userRepository.existsById(id)) {
+        userRepository.deleteById(id);
+        return true;
+    }
+    return false;
+}
+
 }

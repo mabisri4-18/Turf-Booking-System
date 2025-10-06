@@ -203,9 +203,7 @@ const App = () => {
       <Route
         path="/"
         element={
-          <CustomerLayout>
             <LandingPage />
-          </CustomerLayout>
         }
       />
 

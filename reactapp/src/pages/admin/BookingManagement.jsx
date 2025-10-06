@@ -6,7 +6,6 @@ const BookingManagement = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  // Fetch bookings from backend
   const fetchBookings = async () => {
     setLoading(true);
     setError('');
@@ -14,23 +13,24 @@ const BookingManagement = () => {
       const res = await getBookings();
       setBookings(res.data || []);
     } catch (err) {
-      console.error("Fetch failed:", err);
-      setError('Failed to fetch bookings. Please try again.');
+      console.error("Fetch failed:", err.response || err.message);
+      setError('Failed to fetch bookings.');
     } finally {
       setLoading(false);
     }
   };
 
-  // Delete a booking
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this booking?')) return;
     setError('');
     try {
+      console.log("Deleting booking ID:", id);
       await deleteBooking(id);
-      fetchBookings(); // refresh list after deletion
+      alert("Booking deleted successfully!");
+      fetchBookings(); // refresh after delete
     } catch (err) {
-      console.error("Delete failed:", err);
-      setError('Failed to delete booking. Please try again.');
+      console.error("Delete failed:", err.response || err.message);
+      setError('Failed to delete booking.');
     }
   };
 
@@ -63,7 +63,7 @@ const BookingManagement = () => {
 </tr>
 )}
 {bookings.map(b => (
-<tr key={b.id} className="border-b">
+<tr key={b.id} className="border-b hover:bg-gray-50">
 <td className="py-3 px-6">{b.customerName}</td>
 <td className="py-3 px-6">{b.sportType}</td>
 <td className="py-3 px-6">{b.bookingDate}</td>

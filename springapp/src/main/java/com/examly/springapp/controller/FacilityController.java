@@ -35,9 +35,9 @@ public class FacilityController {
         return facilityService.getFacilitiesByType(type);
     }
 
-    @DeleteMapping("/{id}")
-    public String deleteFacility(@PathVariable Long id) {
-        return facilityService.deleteFacility(id);
+    @DeleteMapping("/{facilityId}")
+    public String deleteFacility(@PathVariable Long facilityId) {
+        return facilityService.deleteFacility(facilityId);
     }
 
     @GetMapping("/sortedByName")
