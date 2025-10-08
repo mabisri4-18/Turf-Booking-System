@@ -18,4 +18,5 @@ public class Facility {
     private String type; // turf, court, pool
     private String location;
     private String availabilityStatus; // available, unavailable
+    private String url;
 }
