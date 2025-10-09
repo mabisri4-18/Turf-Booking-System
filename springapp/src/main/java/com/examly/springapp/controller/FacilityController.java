@@ -45,6 +45,13 @@ public class FacilityController {
         return facilityService.getFacilitiesSortedByName();
     }
 
+    @PutMapping("/update/{facilityId}")
+     public Facility updateFacility(@PathVariable Long facilityId, @RequestBody Facility facility) {
+    facility.setFacilityId(facilityId); // Ensure ID is set
+    return facilityService.saveFacility(facility);
+    }
+
+
     @GetMapping("/paginated")
     public Page<Facility> getFacilitiesPaginated(
             @RequestParam(defaultValue = "") String name,

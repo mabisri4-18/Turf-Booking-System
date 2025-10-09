@@ -35,12 +35,24 @@ export const getFacilitiesByType = async (type) => {
   return await axios.get(`${API_URL}/byType?type=${type}`);
 };
 
-// ✅ Create or update facility
-export const saveFacility = async (facility) => {
-  return await axios.post(`${API_URL}/add`, facility);
-};
+// // ✅ Create or update facility
+// export const saveFacility = async (facility) => {
+//   return await axios.post(`${API_URL}/add`, facility);
+// };
 
 // ✅ Delete facility
 export const deleteFacility = async (facilityId) => {
   return await axios.delete(`${API_URL}/${facilityId}`);
+};
+// api/facilities.js
+
+// Add or update facility
+export const saveFacility = async (facility) => {
+  if (facility.facilityId) {
+    // Update existing facility
+    return await axios.put(`${API_URL}/update/${facility.facilityId}`, facility);
+  } else {
+    // Add new facility
+    return await axios.post(`${API_URL}/add`, facility);
+  }
 };
