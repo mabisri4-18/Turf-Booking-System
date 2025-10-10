@@ -53,17 +53,13 @@ const Navbar = () => {
           </>
         )}
 
-     {/* STAFF LINKS */}
-{user?.role?.toUpperCase() === "STAFF" && (
-<>
-<Link to="/staff/dashboard" className="hover:underline">
-Dashboard
-</Link>
-<Link to="/staff/tasks" className="hover:underline">
-Maintenance Tasks
-</Link>
-</>
-)}
+{/* STAFF LINKS */}
+        {user?.role?.toUpperCase() === "STAFF" && (
+          <>
+            <Link to="/staff/dashboard" className="hover:underline">Dashboard</Link>
+            <Link to="/staff/tasks" className="hover:underline">Maintenance Tasks</Link>
+          </>
+        )}
 
 {/* AUTH BUTTONS */}
 {user ? (

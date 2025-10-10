@@ -185,10 +185,6 @@ import BookingForm from "./pages/customer/BookingForm";
 import Payment from "./pages/customer/Payment";
 import BookingHistory from "./pages/customer/BookingHistory";
 
-// Staff Pages
-import StaffDashboard from "./pages/staff/Dashboard";
-import MaintenanceTasks from "./pages/staff/MaintenanceTasks";
-
 // Other
 import LandingPage from "./pages/LandingPage";
 import NotFound from "./pages/NotFound";
@@ -286,27 +282,16 @@ element={
   }
 />
 
-{/* Staff Pages */}
-<Route
-path="/staff/dashboard"
-element={
-<ProtectedRoute role="STAFF">
-<StaffLayout>
-<StaffDashboard />
-</StaffLayout>
-</ProtectedRoute>
-}
-/>
-<Route
-path="/staff/tasks/:id"
-element={
-<ProtectedRoute role="STAFF">
-<StaffLayout>
-<MaintenanceTasks />
-</StaffLayout>
-</ProtectedRoute>
-}
-/>
+ {/* Staff Routes */}
+      <Route
+        path="/staff/*"
+        element={
+          <ProtectedRoute role="STAFF">
+            <StaffLayout />
+          </ProtectedRoute>
+        }
+      />
+
 
 {/* 404 */}
 <Route path="*" element={<NotFound />} />
