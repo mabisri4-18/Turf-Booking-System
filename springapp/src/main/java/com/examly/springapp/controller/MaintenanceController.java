@@ -32,6 +32,11 @@ public class MaintenanceController {
         return maintenanceService.getAllMaintenance();
     }
 
+    @PutMapping("/update/{id}")
+    public Maintenance updateMaintenance(@PathVariable Long id, @RequestBody Maintenance maintenance) {
+    return maintenanceService.updateMaintenance(id, maintenance);
+    }
+
     // Delete Maintenance by ID
     @DeleteMapping("/{id}")
     public String deleteMaintenance(@PathVariable Long id) {

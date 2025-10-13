@@ -26,6 +26,10 @@ const Navbar = () => {
             <Link to="/customer/bookings" className="hover:underline">
               My Bookings
             </Link>
+            <Link to="/customer/feedback" className="hover:underline">
+            Feedback
+            </Link>
+
           </>
         )}
 

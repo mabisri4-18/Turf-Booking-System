@@ -184,6 +184,7 @@ import TurfList from "./pages/customer/TurfList";
 import BookingForm from "./pages/customer/BookingForm";
 import Payment from "./pages/customer/Payment";
 import BookingHistory from "./pages/customer/BookingHistory";
+import Feedback from "./pages/customer/Feedback";
 
 // Other
 import LandingPage from "./pages/LandingPage";
@@ -271,6 +272,16 @@ element={
 </CustomerLayout>
 </ProtectedRoute>
 }
+/>
+<Route
+  path="/customer/feedback"
+  element={
+    <ProtectedRoute role="CUSTOMER">
+      <CustomerLayout>
+        <Feedback />
+      </CustomerLayout>
+    </ProtectedRoute>
+  }
 />
 {/* Admin Pages */}
 <Route

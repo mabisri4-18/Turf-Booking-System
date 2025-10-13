@@ -140,4 +140,12 @@ public ResponseEntity<Map<String, String>> deleteUser(@PathVariable Long id) {
     }
 }
 
+    //  @GetMapping("/getProfile")
+    // public ResponseEntity<UserEntity> getProfile(@AuthenticationPrincipal Jwt jwt) {
+    // String email = jwt.getSubject(); // email from token
+    // Optional<UserEntity> userOpt = userService.findByEmail(email);
+    // return userOpt.map(ResponseEntity::ok)
+    //               .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+//}
+
 }

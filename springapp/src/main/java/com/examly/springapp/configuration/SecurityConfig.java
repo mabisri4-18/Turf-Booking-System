@@ -139,6 +139,7 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
         );
         return http.build();
+        // .oauth2ResourceServer(oauth2 -> oauth2.jwt());
     }
     @Bean
     public PasswordEncoder passwordEncoder()

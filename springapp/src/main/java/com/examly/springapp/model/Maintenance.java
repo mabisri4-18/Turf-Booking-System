@@ -13,7 +13,7 @@ public class Maintenance {
     private Long maintenanceId;
 
     @ManyToOne
-    @JoinColumn(name = "facility_id", nullable = false)
+    @JoinColumn(name = "facility_id", nullable = true)
     private Facility facility;
 
     private LocalDate scheduledDate;
