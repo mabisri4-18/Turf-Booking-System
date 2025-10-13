@@ -66,4 +66,11 @@ Page<Booking> bookings = bookingService.getBookingPaginated(customerName, pageab
 
 return new ResponseEntity<>(bookings, HttpStatus.OK);
 }
+
+@PutMapping("/{id}")
+public ResponseEntity<Booking> updateBooking(@PathVariable Long id, @RequestBody Booking bookingDetails) {
+    Booking updatedBooking = bookingService.updateBooking(id, bookingDetails);
+    return new ResponseEntity<>(updatedBooking, HttpStatus.OK);
+}
+
 }

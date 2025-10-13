@@ -10,4 +10,7 @@ export const getBookingsByCustomer = (customerName = "", page = 0, size = 5) =>
   );
 export const deleteBooking = (id) => axios.delete(`${BASE_URL}/${id}`);
 
+export const updateBooking = async (id, bookingData) => {
+  return await axios.put(`${BASE_URL}/${id}`, bookingData);
+};
 

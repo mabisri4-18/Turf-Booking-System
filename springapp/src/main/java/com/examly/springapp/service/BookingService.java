@@ -21,4 +21,6 @@ public interface BookingService {
 
     Page<Booking> getBookingPaginated(String customerName, Pageable pageable);
 
+    Booking updateBooking(Long id, Booking bookingDetails);
+
 }

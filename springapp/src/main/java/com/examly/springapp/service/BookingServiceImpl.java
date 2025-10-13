@@ -234,4 +234,19 @@ public class BookingServiceImpl implements BookingService {
             return bookingRepository.findAll(pageable);
         }
     }
+    public Booking updateBooking(Long id, Booking bookingDetails) {
+    Booking existingBooking = bookingRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Booking not found with id: " + id));
+
+    // Update all fields
+    existingBooking.setCustomerName(bookingDetails.getCustomerName());
+    existingBooking.setSportType(bookingDetails.getSportType());
+    existingBooking.setBookingDate(bookingDetails.getBookingDate());
+    existingBooking.setTimeSlot(bookingDetails.getTimeSlot());
+    existingBooking.setDuration(bookingDetails.getDuration());
+    existingBooking.setStatus(bookingDetails.getStatus());
+
+    return bookingRepository.save(existingBooking);
+}
+
 }
