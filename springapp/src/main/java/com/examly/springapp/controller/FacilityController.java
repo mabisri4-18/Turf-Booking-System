@@ -14,7 +14,8 @@ import com.examly.springapp.service.FacilityService;
 
 @RestController
 @RequestMapping("/api/facilities")
-@CrossOrigin(origins = "https://8081-bafddcaeceecbceaafbacadbcffceabd.premiumproject.examly.io")
+// @CrossOrigin(origins = "http://localhost:8080/api/facilities")
+@CrossOrigin(origins = "http://localhost:3000")
 public class FacilityController {
 
     @Autowired

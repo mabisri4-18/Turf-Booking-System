@@ -13,7 +13,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/payments")
-@CrossOrigin(origins = "https://8081-bafddcaeceecbceaafbacadbcffceabd.premiumproject.examly.io")
+// @CrossOrigin(origins = "http://localhost:8080/api/payments")
+@CrossOrigin(origins = "http://localhost:3000")
 public class PaymentController {
 
     @Autowired

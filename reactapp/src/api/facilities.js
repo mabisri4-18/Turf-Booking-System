@@ -23,7 +23,7 @@
 // };
 import axios from 'axios';
 
-const API_URL = 'https://8080-bafddcaeceecbceaafbacadbcffceabd.premiumproject.examly.io/api/facilities';
+const API_URL = "http://localhost:8080/api/facilities";
 
 // ✅ Get all facilities
 export const getFacilities = async () => {

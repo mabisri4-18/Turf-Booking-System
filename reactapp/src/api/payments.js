@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://8080-bafddcaeceecbceaafbacadbcffceabd.premiumproject.examly.io/api/payments";
+const BASE_URL = "http://localhost:8080/api/payments";
 
 export const makePayment = (payment) => axios.post(`${BASE_URL}/addPayment`, payment);
 

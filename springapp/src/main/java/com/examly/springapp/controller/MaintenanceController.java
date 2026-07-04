@@ -14,7 +14,8 @@ import com.examly.springapp.service.MaintenanceService;
 
 @RestController
 @RequestMapping("/api/maintenance")
-@CrossOrigin(origins = "https://8081-bafddcaeceecbceaafbacadbcffceabd.premiumproject.examly.io")
+// @CrossOrigin(origins = "http://localhost:8080/api/maintenance")
+@CrossOrigin(origins = "http://localhost:3000")
 public class MaintenanceController {
 
     @Autowired

@@ -28,7 +28,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "BROWSER=none PORT=8081 react-scripts start --disable-host-check --host 0.0.0.0",
+    "start": "cross-env BROWSER=none PORT=8081 react-scripts start --disable-host-check --host 0.0.0.0",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -57,6 +57,7 @@
     "@babel/preset-react": "^7.27.1",
     "autoprefixer": "^10.4.21",
     "babel-jest": "^30.0.5",
+    "cross-env": "^10.1.0",
     "jest-fetch-mock": "^3.0.3",
     "postcss": "^8.5.6",
     "tailwindcss": "^2.2.19"

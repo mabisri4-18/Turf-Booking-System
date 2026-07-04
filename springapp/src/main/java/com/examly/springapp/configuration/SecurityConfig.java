@@ -130,17 +130,21 @@ public class SecurityConfig {
 //         return source;
 //     }
     
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-           .csrf(csrf -> csrf.disable())
-           .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/auth/**","/api/**").permitAll()
-                .anyRequest().authenticated()
+   @Bean
+public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    http
+        .csrf(csrf -> csrf.disable())
+        .cors(cors -> {})
+        .authorizeHttpRequests(auth -> auth
+            .requestMatchers(
+                "/auth/**",
+                "/api/**"
+            ).permitAll()
+            .anyRequest().permitAll()
         );
-        return http.build();
-        // .oauth2ResourceServer(oauth2 -> oauth2.jwt());
-    }
+
+    return http.build();
+}
     @Bean
     public PasswordEncoder passwordEncoder()
     {

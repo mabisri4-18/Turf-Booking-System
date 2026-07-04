@@ -33,7 +33,7 @@
 
 import axios from 'axios';
 
-const BASE_URL = 'https://8080-bafddcaeceecbceaafbacadbcffceabd.premiumproject.examly.io/api/maintenance';
+const BASE_URL = 'http://localhost:8080/api/maintenance';
 
 // ✅ Get all maintenance
 export const getMaintenance = async () => {
